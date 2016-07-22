@@ -1,128 +1,191 @@
 \documentclass{article}
 \begin{document}
-\title{Eccentricity's effect on TwoSpect parameter estimation \\ 
-LIGO-T1500594}
+\title{CrossCorr parameter space double-cone \\ 
+LIGO-T1600313}
 \author{Grant David Meadors}
 \date{\today}
 %\affiliation{AEI Hannover/Golm}
 
 \maketitle
 
+CrossCorr's 3D parameter space (frequency, a sin i, time of ascension) includes a double-cone structure around simulated signals. On this cone, rho values are significantly higher than background, but less than the maximum. This structure can be considered a long-range correlation. While the metric approximation should not be expected to hold on the cone, the cone equation is derivable from degeneracies in the signal model. We illustrate this equation with figures and compare results to the corresponding X-pattern found in TwoSpect.
+
 \section{Introduction}
-Reviewing TwoSpect, we must understand how eccentric orbits could affect TwoSpect.
 
-Begin with Leaci \& Prix [PRD 91 (2015) 102003], who provide an equation (B1) for the instantaneous relative frequency offset of gravitational waves from a neutron star in a binary system, when that offset is caused by orbital motion.
-The offset is expresed by a model of phase $\phi$, gravitational wave frequency $f$, parametrized by orbital angular frequency $\Omega = 2 \pi/P$ for period $P$, as well as argument of periapsis $\omega$ and eccentricity $e$.
-Eccentric anomaly $E$ is a complicated function of time $t$.
-Let the coefficient $a_\mathrm{p} = (a \sin i)/c$, for inclination $i$ and semi-major axis $a$ (the projected semi-major axis is $a \sin i$). 
-Also let $(\delta f) / f$ denote the instantaneous relative frequency offset; then,
 
-\begin{equation}
-\left|\frac{\delta f}{f}\right| = \left| \frac{d \phi/dt}{2 \pi f} - 1 \right|,
-\label{irfo_def}
-\end{equation}
-\begin{equation}
-\left| \frac{d\phi/dt}{2\pi f} -1 \right| = a_\mathrm{p} \Omega \left|\frac{\sqrt{1-e^2} \cos E \cos \omega - \sin E \sin \omega}{1-e \cos E} \right|.
-\label{irfo}
-\end{equation}
+The theory makes more sense now, and I have more and better graphs.
 
-In TwoSpect papers, such as the methods paper by Goetz \& Riles [CQG 28 (2011) 215006], the observed frequency modulation depth, $\Delta f_\mathrm{obs}$, is discussed.
-This modulation depth is a one of the two search dimensions in the Scorpius X-1 directed search (along with $f$) and can be defined,
+First, an erratum. I was a bit careless copying over Python code for my
+original post and missed an absolute value being taken over Rho.
+Moreover, we were looking at Rho, not estSens, all along (a struct
+definition doesn't match the order columns are written to files). The
+first plot, for CrossCorr, actually should be
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/original-CC/FAresultsR-band-100.0.pdf
+
+The X is less pronounced. However, a 10x louder injection brings it out:
+it does look more extended than before,
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/louder-CC/FAresultsR-band-100.0.pdf
+
+Following Ansel's suggestion, I mimicked the TwoSpect injection from the
+original post,
+
+https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/graph-H1-40e-26-TSni/DFvsFresultsProb-H1_pulsar-040.pdf
+
+with CrossCorr (T_sft = 840 s, maxLag = 840 s). The full set of commands
+(run as in "example-TwoSpect-like.txt"; log in "log_crosscorr.txt") and
+Python scripts is in, with some duplication,
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/
+
+Note for CrossCorr people: I'm plotted the (modulation depth = 2 pi a
+sin i / P) dimension instead of a sin i, but the script allows either.
+
+Walking through it, I've taken 2D slices through the
+frequency-modulation depth, modulation depth-time of ascension, and time
+of ascension-frequency planes. F = "frequency", A = "modulation depth"
+(~"a sin i"), T="time of ascension"; each slice preserves F-A-T cyclic
+order.
+
+Slices through the injection center:
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/FAresultsR-band-100.0.pdf
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/ATresultsR-band-100.0.pdf
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/TFresultsR-band-100.0.pdf
+
+Slices through 5-bin offsets (see "note-on-offsets.txt"), equivalent to
+
+    -frequency = 4.7e-4 Hz,
+    -modulation depth = 6.6e-4 Hz,
+    -time of ascension = 537 s
+
+show
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/FAresultsR-band-100.0.pdf
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/ATresultsR-band-100.0.pdf
+
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/TFresultsR-band-100.0.pdf
+
+The features of the structure do make sense. As you have probably
+figured out, we can predict not only that the slope of d(modulation
+depth)/d(frequency) = 1 [equivalently, d(a sin i)/d(frequency) = P / (2
+pi f)]in the FA plane,...
+    but also that in the TF plane the slope must be max(d(instantaneous
+frequency)/dt. With time of ascension Tasc and a sin i in seconds (c = 1),
+
+  d(instantaneous frequency)/dt
+      = d/dt (f0 + (2 pi f0 (a sin i)/P) sin[(2 pi/ P)(t - Tasc)])
+      = (4 pi^2 f0 (a sin i)/P^2) cos[(2 pi/ P)(t - Tasc)])
+  max(d(instantaneous frequency)/dt)
+      := (df/dt)
+      = 4 pi^2 f0 (a sin i)/P^2
+      | f0 = 100.015 Hz, a sin i = 1.44 s, P = 68023.82 s,
+      ~= 1.23e-6 Hz / s
+      ~= 1 mHz / (1000 s)
+
+This slope appears to be what we see in the TFresultsR graphs.
+
+The reason for this slope and the X-pattern in the TF plane is best
+visualized in the 1st Fourier domain of SFTs (as we think of it in
+TwoSpect). There, the signal is a sine-wave with period = P, the orbital
+period, centered on f0, with phase determined by Tasc.
+
+If we try an offset template at f' = f+offset, leaving a sin i and Tasc
+fixed, it will completely miss the signal. But it can still catch the
+RISING edge of the signal's sinusoid if we shift the template orbital
+phase: Tasc' = Tasc + (df/dt)^(-1), where (df/dt) ~ 1 mHz/(1000 s) in
+our example. Likewise for negative offsets. Or, going the opposite way,
+the FALLING edge of the signal can be caught. (signs hopefully right!)
+
+Staying in the 1st Fourier domain, the circle in the AT plane is also
+straightforward. For a fixed frequency offset, a template at Tasc', mod
+depth = DFobs', can slide the point of contact between the template and
+the true sinusoid signal by moving (Tasc', DFobs') in an ellipse. The
+respective semi-axes at frequency offset "F_offset" (F_offset/(df/dt),
+F_offset).
+
+Conceptual note: we're used to thinking that all the power is in the
+"horns", which is true when we sum over SFTs (project the sinusoid's
+power onto the frequency dimension), but the instantaneous power in each
+bin is relatively constant.
+
+Putting all this together, the CrossCorr structure is a cone given by
+the parametric equations [template frequency F', template mod depth
+DFobs', template time of ascension Tasc']
 
 \begin{eqnarray}
-\Delta f_\mathrm{obs} &= a_\mathrm{p} \Omega f \nonumber \\
-    &= \frac{2\pi a \sin i}{cP} f.
-\label{moddepth_def}
+s \in (-\infty, +\infty), \theta \in [0, 2 pi)
 \end{eqnarray}
 
-In the $e = 0$ case, $\delta f = \Delta f_\mathrm{obs} \cos E$; in this zero-eccentricity limit, $\Delta f_\mathrm{obs}$ is well-defined. 
-Then the following are both equal to $\Delta f_\mathrm{obs}$,
-
-\begin{enumerate}
-\item frequency-modulation depth (modulation amplitude)
-\item half of the peak-to-peak modulation width 
-\end{enumerate}
-
-TwoSpect's $R$-statistic templates are weighted heavily toward the modulation-depth extrema, because those are stationary points.
-Therefore, the latter, \textit{peak-to-peak}, definition guides TwoSpect's parameter estimation.
-Simulation software, namely MakeFakeData, takes $a \sin i$ as input.
-Yet TwoSpect templates implicitly assume $e=0$, as they include no eccentricity parameter.
-TwoSpect's inference from the highest-statistic templates to the modulation depth $\Delta f_\mathrm{obs}$ (and $a \sin i$) may therefore be skewed, if $e \neq 0$. 
- 
-The inference from the highest-statistic templates to frequency $f$ may likewise be skewed.
-In the $e=0$ case, $f$ is well-defined, equal to both the following quantities:
-
-\begin{enumerate}
-\item intrinsic gravitational-wave frequency
-\item the mean (half the sum) of the max and min modulation frequencies
-\end{enumerate}
-
-TwoSpect, being dominated by the modulation-depth extrema, is guided by the latter definition.
-Again, MakeFakeData takes $f$ as input.
-This means that $f$ estimation may also be skewed, if $e \neq 0$.
-
-Indeed, this is what injection studies have shown. 
-Can Equation~\ref{irfo} account for the observed skew as an effect of the instantaneous relative frequency offset?
-In the rest of this note we show that this appears to be the case.
-
-\section{Derivation}
-
-\textit{Note: different sign conventions are in use for the argument of periapsis, which affects the sign of the observed offsets. 
-Absolute values circumvent this difficulty.}
-
-In the following, $f$ and $\Delta f_\mathrm{obs}$ (defined by Equation~\ref{moddepth_def}) are fixed quantities for a given injection; they correspond to astrophysical parameters.
-We are studying the parameter estimation error in those quantities.
-Call the \textit{apparent frequency offset} (from eccentricity effects) $\delta f_\mathrm{a}$.
-The apparent modulation depth will be $\Delta f_\mathrm{a}$; subtracting the fixed $\Delta f_\mathrm{obs}$ from $\Delta f_\mathrm{a}$ yields the \textit{apparent modulation depth offset}, $\delta \Delta f_\mathrm{a}$.
-It is $\delta f_\mathrm{a}$ and $\delta \Delta f_\mathrm{a}$ that generate parameter mis-estimates for TwoSpect.
-Where $\max$ and $\min$ functions extremize over $E$,
-
-\begin{equation}
-\delta f_\mathrm{a} = \frac{1}{2} \left| \max(\delta f) + \min(\delta f)\right|,
-\label{dfa}
-\end{equation}
-\begin{equation}
-\delta \Delta f_\mathrm{a} = \frac{1}{2} \left| \max(\delta f) - \min(\delta f)\right| - \Delta f_\mathrm{obs}.
-\label{ddfa}
-\end{equation}
-
-The extremal $\delta f_\mathrm{a}$ and $\delta \Delta f_\mathrm{a}$ depend on Equation \ref{irfo}: the form of the equation immediately shows that an extremum in $E$ and $\omega$ is reached when $E = 0$ and $\omega = n \pi$ for integer $n$.
-Finding $\max(\delta f)$ and $\min(\delta f)$ for general $\omega$ requires solving for $E$,
-
 \begin{eqnarray}
-0 = &\frac{-e \sin E}{\left(1 - e \cos E \right)^{2}} \left(\sqrt{1-e^2} \cos E \cos \omega - \sin E \sin \omega \right) +\ldots \nonumber \\
-    &\frac{-1}{\left(1-e \cos E \right)} \left(\sqrt{1-e^2} \sin E \cos \omega + \cos E \sin \omega \right),
-\end{eqnarray}
-\begin{equation}
-0 = \sqrt{1-e^2} \sin E \cos \omega + (\cos E - e) \sin \omega.
-\label{maxE}
-\end{equation}
-
-\noindent where in the second equality we assume $e\leq 1$ (the orbit is bound).
-Solving this is easiest with a computer algebra system such as Wolfram Alpha, which verifies that $E = \pi n$ are extremal if $\sin \omega = 0$, and states that in other bound orbits the solutions are
-
-\begin{eqnarray}
-E_1 = 2 \pi n - 2 \tan^{-1} \left(\frac{\sqrt{1-e^2} \tan\left(\frac{\omega}{2}\right)}{1+e} \right),
-\label{maxE1}
-\end{eqnarray} 
-\begin{eqnarray}
-E_2 = 2 \pi n + 2 \tan^{-1} \left(\frac{\sqrt{1-e^2} \cot\left(\frac{\omega}{2}\right)}{1+e} \right).
-\label{maxE2}
+F' - f0                        = s
+DFobs' - (2 pi f0 (a sin i)/P) = s * 1 * \cos(\theta)
+Tasc' - Tasc                   = s * (df/dt)^(-1) * sin(theta)
 \end{eqnarray}
 
-\noindent For low eccentricity, $e \ll 1$, $e\geq 0$, we can approximate these solutions as $E_1 = 2\pi n - \omega$, $E_2 = 2\pi n + \pi - \omega$.
-These solutions do solve Equation~\ref{maxE} for $e=0$.
-The MDC paper by Messenger et al [PRD 92 (2015) 023006] interprets Galloway et al [Astrophys J 781 (2014) 14] as a $3-\sigma$ upper limit on $e$ at 0.068, so this approximation seems useful.
-
-Up to an overall sign ambiguity (inherited from Equation~\ref{irfo}, affecting Equations~\ref{dfa} and~\ref{ddfa}), we will calculate $\max(\delta f)$ using $E_1 = -\omega$ and $\min(\delta f)$ using $E_2 = \pi-\omega$:
+The middle equation could equivalently be written
 
 \begin{equation}
-\max(\delta f) = \Delta f_\mathrm{obs} \left(\frac{\sqrt{1-e^2} \cos^2 \omega + \sin^2 \omega}{1-e \cos (\omega)} \right),
-\label{maxdeltaf}
+Asini' - a sin i = s * P/(2 pi f0) * cos(theta)
 \end{equation}
+
+And the last expands to
+
 \begin{equation}
-\min(\delta f) = -\Delta f_\mathrm{obs} \left(\frac{\sqrt{1-e^2} \cos^2\omega + \sin^2 \omega}{1+e \cos \omega} \right),
-\label{mindeltaf}
+Tasc' - Tasc     = s * P^2/(4 pi^2 f0 (a sin i)) * sin(theta)
 \end{equation}
+
+There are a few remaining subtleties. For example, $Tasc'$ will have to
+start curving to follow large $F'$ offsets -- I'd guess the largest scale
+structure in that dimension is actually sinusoidal with period equal to
+orbital period $P$ and amplitude $(P/2)$.
+
+To expand in small errors,
+
+\begin{equation}
+f \approx f0 + err_f + (2pi f0/P)*[
+                     (a sin i)*sin(Omega(t-Tasc))
+                   - err_a * sin(Omega(t-Tasc))
+                   - (a sin i) * Omega err_t]
+                + (2pi err_f/P)*(a sin i)*sin(Omega(t-Tasc))
+\end{equation}
+  (take max)
+\begin{equation}
+f \approx f0 + err_f + (2pi f0/P)*[
+                     a sin i
+                   - err_a *
+                   - 2 pi (a sin i)/P * err_t]
+                + O(0)
+\end{equation}
+
+Where we see that the ratios of coefficients are the same as above. Call
+equal $\Delta f$ errors $eq_f, eq_a, eq_t$:
+
+\begin{eqnarray}
+eq_a / eq_f &=& P / (2 pi f0)\\
+eq_t / eq_f &=& P^2/(4 pi^2 f0 (a sin i))
+\end{eqnarray}
+
+which are the same coefficients as obtained for (Asini' - a sin i) and
+(Tasc' - Tasc) above, where we reasoned from the 1st Fourier domain.
+
+Long story short: the structures make sense.
+
+You're welcome to include any of this material on a wiki, though I do
+not know where on the wiki to put it. Also, please let me know if this
+is old news (and already covered in the iPython notebooks).
+
+My scripts are
+    wrapCrossCorr.py
+      (wrapper function, itself called as in example-TwoSpect-like.txt)
+    libCallCC.py
+      (functions for the wrapper)
+    createHeatmap.py
+      (grapher)
+
 
 \end{document}
