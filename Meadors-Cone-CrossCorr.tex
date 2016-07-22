@@ -31,10 +31,10 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 Following Ansel's suggestion, I mimicked the TwoSpect injection from the
 original post,
 
-https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/graph-H1-40e-26-TSni/DFvsFresultsProb-H1_pulsar-040.pdf
+https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/graph-H1-40e-26-TSni/DFvsFresultsProb-H1\_pulsar-040.pdf
 
-with CrossCorr (T_sft = 840 s, maxLag = 840 s). The full set of commands
-(run as in "example-TwoSpect-like.txt"; log in "log_crosscorr.txt") and
+with CrossCorr ($T_sft$ = 840 s, \texttt{maxLag} = 840 s). The full set of commands
+(run as in "example-TwoSpect-like.txt"; log in "\texttt{log\_crosscorr.txt}") and
 Python scripts is in, with some duplication,
 
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/
@@ -72,20 +72,22 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 
 The features of the structure do make sense. As you have probably
 figured out, we can predict not only that the slope of d(modulation
-depth)/d(frequency) = 1 [equivalently, d(a sin i)/d(frequency) = P / (2
-pi f)]in the FA plane,...
+depth)/d(frequency) = 1 [equivalently, d(a sin i)/d(frequency) = $P / (2
+pi f)]$ in the FA plane,...
     but also that in the TF plane the slope must be max(d(instantaneous
-frequency)/dt. With time of ascension Tasc and a sin i in seconds (c = 1),
+frequency)/dt. With time of ascension $\mathrm{Tasc}$ and $a \sin i$ in seconds ($c$ = 1),
 
-  d(instantaneous frequency)/dt
-      = d/dt (f0 + (2 pi f0 (a sin i)/P) sin[(2 pi/ P)(t - Tasc)])
-      = (4 pi^2 f0 (a sin i)/P^2) cos[(2 pi/ P)(t - Tasc)])
-  max(d(instantaneous frequency)/dt)
+\begin{eqnarray}
+  d(\mathrm{instantaneous frequency})/dt
+      = d/dt (f0 + (2 pi f0 (a \sin i)/P) \sin[(2 pi/ P)(t - \mathrm{Tasc})])
+      = (4 pi^2 f0 (a \sin i)/P^2) \cos[(2 pi/ P)(t - \mathrm{Tasc})])
+  \max(d(\mathrm{instantaneous frequency})/dt)
       := (df/dt)
       = 4 pi^2 f0 (a sin i)/P^2
       | f0 = 100.015 Hz, a sin i = 1.44 s, P = 68023.82 s,
       ~= 1.23e-6 Hz / s
       ~= 1 mHz / (1000 s)
+\end{eqnarray}
 
 This slope appears to be what we see in the TFresultsR graphs.
 
@@ -97,7 +99,7 @@ period, centered on f0, with phase determined by Tasc.
 If we try an offset template at f' = f+offset, leaving a sin i and Tasc
 fixed, it will completely miss the signal. But it can still catch the
 RISING edge of the signal's sinusoid if we shift the template orbital
-phase: Tasc' = Tasc + (df/dt)^(-1), where (df/dt) ~ 1 mHz/(1000 s) in
+phase: Tasc' = Tasc + $(df/dt)^(-1)$, where $(df/dt)$ ~ 1 mHz/(1000 s) in
 our example. Likewise for negative offsets. Or, going the opposite way,
 the FALLING edge of the signal can be caught. (signs hopefully right!)
 
@@ -105,8 +107,8 @@ Staying in the 1st Fourier domain, the circle in the AT plane is also
 straightforward. For a fixed frequency offset, a template at Tasc', mod
 depth = DFobs', can slide the point of contact between the template and
 the true sinusoid signal by moving (Tasc', DFobs') in an ellipse. The
-respective semi-axes at frequency offset "F_offset" (F_offset/(df/dt),
-F_offset).
+respective semi-axes at frequency offset "F\_offset" (F\_offset/$(df/dt)$,
+F\_offset).
 
 Conceptual note: we're used to thinking that all the power is in the
 "horns", which is true when we sum over SFTs (project the sinusoid's
@@ -122,9 +124,9 @@ s \in (-\infty, +\infty), \theta \in [0, 2 pi)
 \end{eqnarray}
 
 \begin{eqnarray}
-F' - f0                        = s
-DFobs' - (2 pi f0 (a sin i)/P) = s * 1 * \cos(\theta)
-Tasc' - Tasc                   = s * (df/dt)^(-1) * sin(theta)
+F' - f0                        &=& s\\
+DFobs' - (2 pi f0 (a sin i)/P) &=& s * 1 * \cos(\theta)\\
+Tasc' - Tasc                   &=& s * (df/dt)^(-1) * sin(theta)
 \end{eqnarray}
 
 The middle equation could equivalently be written
@@ -146,21 +148,21 @@ orbital period $P$ and amplitude $(P/2)$.
 
 To expand in small errors,
 
-\begin{equation}
-f \approx f0 + err_f + (2pi f0/P)*[
-                     (a sin i)*sin(Omega(t-Tasc))
-                   - err_a * sin(Omega(t-Tasc))
-                   - (a sin i) * Omega err_t]
-                + (2pi err_f/P)*(a sin i)*sin(Omega(t-Tasc))
-\end{equation}
+\begin{eqnarray}
+f &\approx& f0 + err_f + (2pi f0/P)*[
+                     (a sin i)*sin(Omega(t-Tasc)) \\
+                   &-& err_a * sin(Omega(t-Tasc)) \\
+                   &-& (a sin i) * Omega err_t] \\
+                   &+& (2pi err_f/P)*(a sin i)*sin(Omega(t-Tasc))
+\end{eqnarray}
   (take max)
-\begin{equation}
-f \approx f0 + err_f + (2pi f0/P)*[
-                     a sin i
-                   - err_a *
-                   - 2 pi (a sin i)/P * err_t]
-                + O(0)
-\end{equation}
+\begin{eqnarray}
+f &\approx& f0 + err_f + (2pi f0/P)*[
+                     a sin i \\ 
+                   &-& err_a * \\
+                   &-& 2 pi (a sin i)/P * err_t] \\
+                   &+& O(0)
+\end{eqnarray}
 
 Where we see that the ratios of coefficients are the same as above. Call
 equal $\Delta f$ errors $eq_f, eq_a, eq_t$:
@@ -170,8 +172,8 @@ eq_a / eq_f &=& P / (2 pi f0)\\
 eq_t / eq_f &=& P^2/(4 pi^2 f0 (a sin i))
 \end{eqnarray}
 
-which are the same coefficients as obtained for (Asini' - a sin i) and
-(Tasc' - Tasc) above, where we reasoned from the 1st Fourier domain.
+which are the same coefficients as obtained for $(Asini' - a sin i)$ and
+$(Tasc' - Tasc)$ above, where we reasoned from the 1st Fourier domain.
 
 Long story short: the structures make sense.
 
@@ -187,5 +189,6 @@ My scripts are
     createHeatmap.py
       (grapher)
 
+NOTE: ADD material on why there are double-dots at $\pm$ some frequency around the central injection. My guess is that they are at one modulation depth away, and result from being in anti-phase somehow -- but it does not totally make sense. Investigate.
 
 \end{document}
