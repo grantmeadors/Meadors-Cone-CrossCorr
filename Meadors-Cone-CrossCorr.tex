@@ -1,0 +1,128 @@
+\documentclass{article}
+\begin{document}
+\title{Eccentricity's effect on TwoSpect parameter estimation \\ 
+LIGO-T1500594}
+\author{Grant David Meadors}
+\date{\today}
+%\affiliation{AEI Hannover/Golm}
+
+\maketitle
+
+\section{Introduction}
+Reviewing TwoSpect, we must understand how eccentric orbits could affect TwoSpect.
+
+Begin with Leaci \& Prix [PRD 91 (2015) 102003], who provide an equation (B1) for the instantaneous relative frequency offset of gravitational waves from a neutron star in a binary system, when that offset is caused by orbital motion.
+The offset is expresed by a model of phase $\phi$, gravitational wave frequency $f$, parametrized by orbital angular frequency $\Omega = 2 \pi/P$ for period $P$, as well as argument of periapsis $\omega$ and eccentricity $e$.
+Eccentric anomaly $E$ is a complicated function of time $t$.
+Let the coefficient $a_\mathrm{p} = (a \sin i)/c$, for inclination $i$ and semi-major axis $a$ (the projected semi-major axis is $a \sin i$). 
+Also let $(\delta f) / f$ denote the instantaneous relative frequency offset; then,
+
+\begin{equation}
+\left|\frac{\delta f}{f}\right| = \left| \frac{d \phi/dt}{2 \pi f} - 1 \right|,
+\label{irfo_def}
+\end{equation}
+\begin{equation}
+\left| \frac{d\phi/dt}{2\pi f} -1 \right| = a_\mathrm{p} \Omega \left|\frac{\sqrt{1-e^2} \cos E \cos \omega - \sin E \sin \omega}{1-e \cos E} \right|.
+\label{irfo}
+\end{equation}
+
+In TwoSpect papers, such as the methods paper by Goetz \& Riles [CQG 28 (2011) 215006], the observed frequency modulation depth, $\Delta f_\mathrm{obs}$, is discussed.
+This modulation depth is a one of the two search dimensions in the Scorpius X-1 directed search (along with $f$) and can be defined,
+
+\begin{eqnarray}
+\Delta f_\mathrm{obs} &= a_\mathrm{p} \Omega f \nonumber \\
+    &= \frac{2\pi a \sin i}{cP} f.
+\label{moddepth_def}
+\end{eqnarray}
+
+In the $e = 0$ case, $\delta f = \Delta f_\mathrm{obs} \cos E$; in this zero-eccentricity limit, $\Delta f_\mathrm{obs}$ is well-defined. 
+Then the following are both equal to $\Delta f_\mathrm{obs}$,
+
+\begin{enumerate}
+\item frequency-modulation depth (modulation amplitude)
+\item half of the peak-to-peak modulation width 
+\end{enumerate}
+
+TwoSpect's $R$-statistic templates are weighted heavily toward the modulation-depth extrema, because those are stationary points.
+Therefore, the latter, \textit{peak-to-peak}, definition guides TwoSpect's parameter estimation.
+Simulation software, namely MakeFakeData, takes $a \sin i$ as input.
+Yet TwoSpect templates implicitly assume $e=0$, as they include no eccentricity parameter.
+TwoSpect's inference from the highest-statistic templates to the modulation depth $\Delta f_\mathrm{obs}$ (and $a \sin i$) may therefore be skewed, if $e \neq 0$. 
+ 
+The inference from the highest-statistic templates to frequency $f$ may likewise be skewed.
+In the $e=0$ case, $f$ is well-defined, equal to both the following quantities:
+
+\begin{enumerate}
+\item intrinsic gravitational-wave frequency
+\item the mean (half the sum) of the max and min modulation frequencies
+\end{enumerate}
+
+TwoSpect, being dominated by the modulation-depth extrema, is guided by the latter definition.
+Again, MakeFakeData takes $f$ as input.
+This means that $f$ estimation may also be skewed, if $e \neq 0$.
+
+Indeed, this is what injection studies have shown. 
+Can Equation~\ref{irfo} account for the observed skew as an effect of the instantaneous relative frequency offset?
+In the rest of this note we show that this appears to be the case.
+
+\section{Derivation}
+
+\textit{Note: different sign conventions are in use for the argument of periapsis, which affects the sign of the observed offsets. 
+Absolute values circumvent this difficulty.}
+
+In the following, $f$ and $\Delta f_\mathrm{obs}$ (defined by Equation~\ref{moddepth_def}) are fixed quantities for a given injection; they correspond to astrophysical parameters.
+We are studying the parameter estimation error in those quantities.
+Call the \textit{apparent frequency offset} (from eccentricity effects) $\delta f_\mathrm{a}$.
+The apparent modulation depth will be $\Delta f_\mathrm{a}$; subtracting the fixed $\Delta f_\mathrm{obs}$ from $\Delta f_\mathrm{a}$ yields the \textit{apparent modulation depth offset}, $\delta \Delta f_\mathrm{a}$.
+It is $\delta f_\mathrm{a}$ and $\delta \Delta f_\mathrm{a}$ that generate parameter mis-estimates for TwoSpect.
+Where $\max$ and $\min$ functions extremize over $E$,
+
+\begin{equation}
+\delta f_\mathrm{a} = \frac{1}{2} \left| \max(\delta f) + \min(\delta f)\right|,
+\label{dfa}
+\end{equation}
+\begin{equation}
+\delta \Delta f_\mathrm{a} = \frac{1}{2} \left| \max(\delta f) - \min(\delta f)\right| - \Delta f_\mathrm{obs}.
+\label{ddfa}
+\end{equation}
+
+The extremal $\delta f_\mathrm{a}$ and $\delta \Delta f_\mathrm{a}$ depend on Equation \ref{irfo}: the form of the equation immediately shows that an extremum in $E$ and $\omega$ is reached when $E = 0$ and $\omega = n \pi$ for integer $n$.
+Finding $\max(\delta f)$ and $\min(\delta f)$ for general $\omega$ requires solving for $E$,
+
+\begin{eqnarray}
+0 = &\frac{-e \sin E}{\left(1 - e \cos E \right)^{2}} \left(\sqrt{1-e^2} \cos E \cos \omega - \sin E \sin \omega \right) +\ldots \nonumber \\
+    &\frac{-1}{\left(1-e \cos E \right)} \left(\sqrt{1-e^2} \sin E \cos \omega + \cos E \sin \omega \right),
+\end{eqnarray}
+\begin{equation}
+0 = \sqrt{1-e^2} \sin E \cos \omega + (\cos E - e) \sin \omega.
+\label{maxE}
+\end{equation}
+
+\noindent where in the second equality we assume $e\leq 1$ (the orbit is bound).
+Solving this is easiest with a computer algebra system such as Wolfram Alpha, which verifies that $E = \pi n$ are extremal if $\sin \omega = 0$, and states that in other bound orbits the solutions are
+
+\begin{eqnarray}
+E_1 = 2 \pi n - 2 \tan^{-1} \left(\frac{\sqrt{1-e^2} \tan\left(\frac{\omega}{2}\right)}{1+e} \right),
+\label{maxE1}
+\end{eqnarray} 
+\begin{eqnarray}
+E_2 = 2 \pi n + 2 \tan^{-1} \left(\frac{\sqrt{1-e^2} \cot\left(\frac{\omega}{2}\right)}{1+e} \right).
+\label{maxE2}
+\end{eqnarray}
+
+\noindent For low eccentricity, $e \ll 1$, $e\geq 0$, we can approximate these solutions as $E_1 = 2\pi n - \omega$, $E_2 = 2\pi n + \pi - \omega$.
+These solutions do solve Equation~\ref{maxE} for $e=0$.
+The MDC paper by Messenger et al [PRD 92 (2015) 023006] interprets Galloway et al [Astrophys J 781 (2014) 14] as a $3-\sigma$ upper limit on $e$ at 0.068, so this approximation seems useful.
+
+Up to an overall sign ambiguity (inherited from Equation~\ref{irfo}, affecting Equations~\ref{dfa} and~\ref{ddfa}), we will calculate $\max(\delta f)$ using $E_1 = -\omega$ and $\min(\delta f)$ using $E_2 = \pi-\omega$:
+
+\begin{equation}
+\max(\delta f) = \Delta f_\mathrm{obs} \left(\frac{\sqrt{1-e^2} \cos^2 \omega + \sin^2 \omega}{1-e \cos (\omega)} \right),
+\label{maxdeltaf}
+\end{equation}
+\begin{equation}
+\min(\delta f) = -\Delta f_\mathrm{obs} \left(\frac{\sqrt{1-e^2} \cos^2\omega + \sin^2 \omega}{1+e \cos \omega} \right),
+\label{mindeltaf}
+\end{equation}
+
+\end{document}
