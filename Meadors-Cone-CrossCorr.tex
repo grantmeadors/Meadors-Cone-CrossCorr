@@ -287,16 +287,17 @@ Beginning from the signal model in the \textit{time-frequency} plane:
 f & \approx & f_0 + \epsilon_f \\
                    &+& \frac{2\pi f_0}{P} \left[
                      a_p \sin(\Omega(t-t_\mathrm{asc}))
-                    - \epsilon_{a_p} \sin(\Omega (t-t_\mathrm{asc}))
+                   - \epsilon_{a_p} \sin(\Omega (t-t_\mathrm{asc}))
                    - a_p \Omega \epsilon_{t_\mathrm{asc}} \right]  \\
                    &+& \frac{2 \pi \epsilon_f}{P}  a_p  \sin(\Omega ( t-t_\mathrm{asc}))
 \end{eqnarray}
 \begin{eqnarray}
-\max(f) &\approx& f0 + err_f + (2pi f0/P)*[
-                     a sin i \\ 
-                   &-& err_a * \\
-                   &-& 2 pi (a sin i)/P * err_t] \\
-                   &+& O(0)
+\max(f) &\approx& f_0 + \epsilon_f \\
+                   &+&\frac{2 \pi f_0}{P}*\left[
+                     a_p
+                   - \epsilon_{a_p}
+                   - \frac{2 \pi  a_p}{P} \epsilon_{t_\mathrm{asc}}\right] \\
+                   &+& \mathcal{O}(0)
 \end{eqnarray}
 
 Where we see that the ratios of coefficients are the same as above. Call
