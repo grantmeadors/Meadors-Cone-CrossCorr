@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{hyperref}
+\usepackage{graphicx}
 \begin{document}
 \title{CrossCorr parameter space double-cone \\ 
 LIGO-T1600313}
@@ -16,38 +17,15 @@ CrossCorr's 3D parameter space (frequency, a sin i, time of ascension) includes 
 
 The theory makes more sense now, and I have more and better graphs.
 
-First, an erratum. I was a bit careless copying over Python code for my
-original post and missed an absolute value being taken over Rho.
-Moreover, we were looking at Rho, not estSens, all along (a struct
-definition doesn't match the order columns are written to files). The
-first plot, for CrossCorr, actually should be
-
-\begin{figure}
-\caption{
-\url{<
-https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/original-CC/FAresultsR-band-100.0.pdf
->}
-}
-\end{figure}
-
-The X is less pronounced. However, a 10x louder injection brings it out:
-it does look more extended than before,
-
-\begin{figure}
-\caption{
-\url{<
-https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/louder-CC/FAresultsR-band-100.0.pdf
->}
-}
-\end{figure}
 
 Following Ansel's suggestion, I mimicked the TwoSpect injection from the
 original post,
 
 \begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/DFvsFresultsProb-H1_pulsar-040.pdf}
 \caption{
 \url{<
-https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/graph-H1-40e-26-TSni/DFvsFresultsProb-H1\_pulsar-040.pdf
+https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/graph-H1-40e-26-TSni/DFvsFresultsProb-H1_pulsar-040.pdf
 >}
 }
 \end{figure}
@@ -56,13 +34,11 @@ with CrossCorr ($T_sft$ = 840 s, \texttt{maxLag} = 840 s). The full set of comma
 (run as in "example-TwoSpect-like.txt"; log in "\texttt{log\_crosscorr.txt}") and
 Python scripts is in, with some duplication,
 
-\begin{figure}
-\caption{
+\begin{center}
 \url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/
 >}
-}
-\end{figure}
+\end{center}
 
 Note for CrossCorr people: I'm plotted the (modulation depth = 2 pi a
 sin i / P) dimension instead of a sin i, but the script allows either.
@@ -76,6 +52,7 @@ order.
 Slices through the injection center:
 
 \begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/FAresultsR-band-100-0.pdf}
 \caption{
 \url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/FAresultsR-band-100.0.pdf
@@ -84,6 +61,7 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 \end{figure}
 
 \begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/ATresultsR-band-100-0.pdf}
 \caption{
 \url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/ATresultsR-band-100.0.pdf
@@ -92,6 +70,7 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 \end{figure}
 
 \begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/TFresultsR-band-100-0.pdf}
 \caption{
 \url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/TFresultsR-band-100.0.pdf
@@ -109,6 +88,7 @@ Slices through 5-bin offsets (see "note-on-offsets.txt"), equivalent to
 show
 
 \begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-offset-TS/FAresultsR-band-100-0.pdf}
 \caption{
 \url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/FAresultsR-band-100.0.pdf
@@ -117,6 +97,7 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 \end{figure}
 
 \begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-offset-TS/ATresultsR-band-100-0.pdf}
 \caption{
 \url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/ATresultsR-band-100.0.pdf
@@ -125,6 +106,7 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 \end{figure}
 
 \begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-offset-TS/TFresultsR-band-100-0.pdf}
 \caption{
 \url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/TFresultsR-band-100.0.pdf
