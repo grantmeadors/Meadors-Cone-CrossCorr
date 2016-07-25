@@ -54,7 +54,7 @@ The scripts are
       (grapher)
 \end{itemize}
 
-Note that we plot $\Delta f_\mathrm{obs}$,
+\noindent Note that we plot $\Delta f_\mathrm{obs}$,
 
 \begin{equation} 
 \Delta f_\mathrm{obs} = \frac{2 \pi a_p}{P} f,
@@ -79,44 +79,8 @@ We take 2D slices through the 3D CrossCorr parameter space.
 These dimensions are referenced by one-letter shorthand: F for $f$, A for $a_p$, T for $t_\mathrm{asc}$.
 For ease of comparison, $\Delta f_\mathrm{obs} \propto a_p$ is actually graphed for A.
 Each slice preserves F-A-T cyclic order, meaning that we graph the FA, AT, and TF planes along $xy$-axes.
-
-
-
-\subsection{Slices through injection center}
-
-\begin{figure}
-\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/FAresultsR-band-100-0.pdf}
-\caption{
-\url{<
-https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/FAresultsR-band-100.0.pdf
->}
-}
-\label{FAcenterGraph}
-\end{figure}
-
-\begin{figure}
-\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/ATresultsR-band-100-0.pdf}
-\caption{
-\url{<
-https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/ATresultsR-band-100.0.pdf
->}
-}
-\label{ATcenterGraph}
-\end{figure}
-
-\begin{figure}
-\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/TFresultsR-band-100-0.pdf}
-\caption{
-\url{<
-https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/TFresultsR-band-100.0.pdf
->}
-}
-\label{TFcenterGraph}
-\end{figure}
-
-Figures~\ref{FAcenterGraph},~\ref{ATcenterGraph}, and~\ref{TFcenterGraph} respectively depict the $f$-$\Delta f_\mathrm{obs}$, $\Delta f_\mathrm{obs}$-$t_\mathrm{asc}$, and $t_\mathrm{asc}$-$f$ plane through the center of an injection. 
-
 Injection parameters are listed in Table~\ref{injection_table}; \texttt{lalapps\_Makefakedata\_v5} generated the injection.
+
 
 \begin{center}
 \begin{table}
@@ -148,6 +112,44 @@ Injection parameters are listed in Table~\ref{injection_table}; \texttt{lalapps\
 \end{table}
 \end{center}
 
+
+
+\subsection{Slices through injection center}
+
+
+
+\begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/FAresultsR-band-100-0.pdf}
+\caption{
+\url{<
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/FAresultsR-band-100.0.pdf
+>}
+}
+\label{FAcenterGraph}
+\end{figure}
+\begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/ATresultsR-band-100-0.pdf}
+\caption{
+\url{<
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/ATresultsR-band-100.0.pdf
+>}
+}
+\label{ATcenterGraph}
+\end{figure}
+\begin{figure}
+\includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-TS/TFresultsR-band-100-0.pdf}
+\caption{
+\url{<
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/TFresultsR-band-100.0.pdf
+>}
+}
+\label{TFcenterGraph}
+\end{figure}
+
+Figures~\ref{FAcenterGraph},~\ref{ATcenterGraph}, and~\ref{TFcenterGraph} respectively depict the $f$-$\Delta f_\mathrm{obs}$, $\Delta f_\mathrm{obs}$-$t_\mathrm{asc}$, and $t_\mathrm{asc}$-$f$ plane through the center of an injection. 
+The FA plane shows an $X$-pattern, AT an ellitical peak, and TF another $X$ pattern with a different slope.
+The maximum of each pattern is at the center of each graph (the injection site).
+
 \subsection{Slices through offset planes}
 
 Slices through 5-bin offsets are also shown (\textit{c.f.,} \texttt{note-on-offsets.txt}) in Figures~\ref{FAoffsetGraph},~\ref{AToffsetGraph},~\ref{TFoffsetGraph}, in the same order as before.
@@ -159,6 +161,7 @@ The 5-bin offset is equivalent to
     \item $\delta t_\mathrm{asc}$ (time of ascension) = $537$ s.
 \end{itemize}
 
+\noindent The FA plane shows a hyperboloid with transverse axis parallel to the $f$-axis, the AT plane an open ring with maxima along an ellipse with transverse axis parallel to the $t_\mathrm{asc}$-axis, and the TF plane another hyperboloid with transverse axis parallel to the $f$-axis.
 
 \begin{figure}
 \includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/match-offset-TS/FAresultsR-band-100-0.pdf}
@@ -189,6 +192,8 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 }
 \label{TFoffsetGraph}
 \end{figure}
+
+\section{Interpretation}
 
 The features of the structure do make sense. As you have probably
 figured out, we can predict not only that the slope of d(modulation
