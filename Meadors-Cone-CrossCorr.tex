@@ -199,12 +199,15 @@ The conic sections observed in Figures~\ref{FAcenterGraph} through~\ref{TFoffset
 Since the behavior of $\rho$ near the injection is well-described by the metric in the methods paper, let us focus on the extended cone.
 When clarity is needed, true injection parameters are subscribed with zero (\textit{e.g.,} $f_0$).
 
-In the FA plane, the $X$-slope $d \Delta f_\mathrm{obs} / df = \pm1$.
+Begin by considering the \textit{time-frequency} plane -- a spectogram, or plot of Short Fourier Transform bin powers over time -- of a solar-system barycentered signal.
+Although power is concentrated in the extremal frequencies ($f_0 \pm \Delta f_\mathrm{obs}$) when averaged over time, as in the amplitude spectral density or an FFT over times of the \textit{time-frequency} plane, in the plane itself, the bins have comparitively uniform power.
+
+Turning to the graphs: in the FA plane, the $X$-slope $d \Delta f_\mathrm{obs} / df = \pm1$.
 This slope is identical to the $X$ in TwoSpect.
-Its origin is described in the TwoSpect directed methods paper.
-To recapitulate, begin by considering the \textit{time-frequency} plane -- a spectogram, or plot of Short Fourier Transform bin powers over time -- of a solar-system barycentered signal.
+Its origin is described in depth in the TwoSpect directed methods paper.
 When $f$ is offset by $\delta f$ and other parameters remain the same, the signal is lost.
 However, if $\Delta f_\mathrm{obs}$ is also offset by $|\pm \delta \Delta f_\mathrm{obs}| = \delta f$, then the maximum (or minimum) frequency of the signal, $f_0 \pm \Delta f_\mathrm{obs}$, will be sensed by a template. 
+Note also that when $\delta t_\mathrm{asc} \neq 0$, the true parameters miss the extrema; we deal with this more rigorously later.
 In units of projected semi-major axis,
 
 \begin{equation}
@@ -214,7 +217,9 @@ In units of projected semi-major axis,
 Observe next the TF plane.
 By similar, phenomenological reasoning, we infer that the $X$-pattern is the result of contact between the rising (or falling) edges of the template with the true signal. 
 Offset orbital phase $\delta t_\mathrm{asc}$ is compensated by shifting $\delta f$ so that the whole sinusoid moves parallel to the true signal.
-We reason that the slope must be $\pm \max \left(d f / d t\right)$ (identical results are obtained, up to a sign, by extremizing $t_\mathrm{asc}$):
+The rising (or falling) edge of the \textit{time-frequency} sinusoid is caught when $\delta t_\mathrm{asc} = \pm \delta f / \max(df /dt)$.
+When $\delta a_p \neq 0$, the true parameters miss the slope; we also deal with this more rigorously later.
+Calculating $\pm \max \left(d f / d t\right)$ (identical results are obtained, up to a sign, by extremizing $t_\mathrm{asc}$),
 
 \begin{eqnarray}
   \frac{df}{dt}
@@ -228,7 +233,8 @@ We reason that the slope must be $\pm \max \left(d f / d t\right)$ (identical re
 \end{eqnarray}
 
 \noindent Such a slope is observed in Figure~\ref{TFcenterGraph}.
-To reiterate: the rising (or falling) edge of the \textit{time-frequency} sinusoid is caught when $\delta t_\mathrm{asc} = \pm \delta f / \max(df /dt)$.
+
+Last, the ellipse in the AT plane emerges from moving the point of contact between the template and the signal.
 
 
 Staying in the 1st Fourier domain, the circle in the AT plane is also
