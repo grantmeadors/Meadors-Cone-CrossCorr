@@ -1,6 +1,10 @@
 \documentclass{article}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{listings}
+
+\lstset{breaklines=true}
+
 \begin{document}
 \title{CrossCorr parameter space double-cone \\ 
 LIGO-T1600313}
@@ -25,7 +29,7 @@ Here we note how investigations into CrossCorr [\textit{Physical Review D} \text
 While this long-range correlated structure should not be expected to be predicted by the metric approximation about peak $\rho$, it is a predictable consequence of the signal model.
 Similar structures can reasonably be expected from other binary continuous-wave searches.
 
-Scripts and plots are hosted on Atlas,
+Scripts and plots are hosted on Atlas:
 
 \begin{center}
 \url{<
@@ -33,6 +37,8 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 >}
 \end{center}
 
+\noindent They are also copied in the \texttt{plots} and \texttt{scripts} directories accompanying the source for this report.
+Appendix~\ref{source_code_appendix} contains the source code, with automatic linebreaks provided by the \LaTeX~\texttt{listings} package.
 \noindent CrossCorr settings 
 are logged in 
 \texttt{log\_crosscorr.txt}. 
@@ -260,5 +266,21 @@ is old news (and already covered in the iPython notebooks).
 %      (grapher)
 
 NOTE: ADD material on why there are double-dots at $\pm$ some frequency around the central injection. My guess is that they are at one modulation depth away, and result from being in anti-phase somehow -- but it does not totally make sense. Investigate.
+
+\newpage
+
+\appendix
+\section{Source code}
+\label{source_code_appendix}
+
+\subsection{example-TwoSpect-like.txt}
+\lstinputlisting{scripts/example-TwoSpect-like.txt}
+\subsection{wrapCrossCorr.py}
+\lstinputlisting[language=Python]{scripts/wrapCrossCorr.py}
+\subsection{libCallCC.py}
+\lstinputlisting[language=Python]{scripts/libCallCC.py}
+\subsection{createHeatmap.py}
+\lstinputlisting[language=Python]{scripts/createHeatmap.py}
+
 
 \end{document}

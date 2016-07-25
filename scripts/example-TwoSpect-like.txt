@@ -1,0 +1,1 @@
+./wrapCrossCorr.py --InjH0 4e-25 --InjTpBand 1125.000 --InjAsiniBand 1.08 --fBand 0.02 --numCand 10000000 --InjF 100.015 --tsft 840 --tspan 1000000 --maxLag 840
