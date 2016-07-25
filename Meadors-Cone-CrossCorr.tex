@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{hyperref}
 \begin{document}
 \title{CrossCorr parameter space double-cone \\ 
 LIGO-T1600313}
@@ -21,23 +22,47 @@ Moreover, we were looking at Rho, not estSens, all along (a struct
 definition doesn't match the order columns are written to files). The
 first plot, for CrossCorr, actually should be
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/original-CC/FAresultsR-band-100.0.pdf
+>}
+}
+\end{figure}
 
 The X is less pronounced. However, a 10x louder injection brings it out:
 it does look more extended than before,
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/louder-CC/FAresultsR-band-100.0.pdf
+>}
+}
+\end{figure}
 
 Following Ansel's suggestion, I mimicked the TwoSpect injection from the
 original post,
 
+\begin{figure}
+\caption{
+\url{<
 https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/graph-H1-40e-26-TSni/DFvsFresultsProb-H1\_pulsar-040.pdf
+>}
+}
+\end{figure}
 
 with CrossCorr ($T_sft$ = 840 s, \texttt{maxLag} = 840 s). The full set of commands
 (run as in "example-TwoSpect-like.txt"; log in "\texttt{log\_crosscorr.txt}") and
 Python scripts is in, with some duplication,
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/
+>}
+}
+\end{figure}
 
 Note for CrossCorr people: I'm plotted the (modulation depth = 2 pi a
 sin i / P) dimension instead of a sin i, but the script allows either.
@@ -50,11 +75,30 @@ order.
 
 Slices through the injection center:
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/FAresultsR-band-100.0.pdf
+>}
+}
+\end{figure}
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/ATresultsR-band-100.0.pdf
+>}
+}
+\end{figure}
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-TS/TFresultsR-band-100.0.pdf
+>}
+}
+\end{figure}
+
 
 Slices through 5-bin offsets (see "note-on-offsets.txt"), equivalent to
 
@@ -64,11 +108,29 @@ Slices through 5-bin offsets (see "note-on-offsets.txt"), equivalent to
 
 show
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/FAresultsR-band-100.0.pdf
+>}
+}
+\end{figure}
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/ATresultsR-band-100.0.pdf
+>}
+}
+\end{figure}
 
+\begin{figure}
+\caption{
+\url{<
 https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/match-offset-TS/TFresultsR-band-100.0.pdf
+>}
+}
+\end{figure}
 
 The features of the structure do make sense. As you have probably
 figured out, we can predict not only that the slope of d(modulation
@@ -182,11 +244,11 @@ not know where on the wiki to put it. Also, please let me know if this
 is old news (and already covered in the iPython notebooks).
 
 My scripts are
-    wrapCrossCorr.py
+    \texttt{wrapCrossCorr.py}
       (wrapper function, itself called as in example-TwoSpect-like.txt)
-    libCallCC.py
+    \texttt{libCallCC.py}
       (functions for the wrapper)
-    createHeatmap.py
+    \texttt{createHeatmap.py}
       (grapher)
 
 NOTE: ADD material on why there are double-dots at $\pm$ some frequency around the central injection. My guess is that they are at one modulation depth away, and result from being in anti-phase somehow -- but it does not totally make sense. Investigate.
