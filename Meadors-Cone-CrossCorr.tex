@@ -269,7 +269,6 @@ Likewise, the equation last expands to
 \subsection{Periodicity in time of ascension}
 
 
-
 At the largest scale, $t_\mathrm{asc}$ is periodic: $\rho(t_\mathrm{asc}) = \rho(t_\mathrm{asc} \mathrm{~mod~} P)$.
 While we neglect this periodicity in our current studies, we expect that the full TF plane would show that the surface follows
 
@@ -281,18 +280,19 @@ While we neglect this periodicity in our current studies, we expect that the ful
 
 \subsection{Alternate derivation from small errors}
 
-Our problem can be approached more rigorously by considering small errors: $\epsilon_f$, $\epsilon_{a_p}$, $\epsilon_{t_\mathrm{asc}}$:
+Our problem can be approached more rigorously by considering small errors: $\epsilon_f$, $\epsilon_{a_p}$, $\epsilon_{t_\mathrm{asc}}$.
+Beginning from the signal model in the \textit{time-frequency} plane:
 
 \begin{eqnarray}
-f &\approx& f0 + err_f + (2pi f0/P)*[
-                     (a sin i)*sin(Omega(t-Tasc)) \\
-                   &-& err_a * sin(Omega(t-Tasc)) \\
-                   &-& (a sin i) * Omega err_t] \\
-                   &+& (2pi err_f/P)*(a sin i)*sin(Omega(t-Tasc))
+f & \approx & f_0 + \epsilon_f \\
+                   &+& \frac{2\pi f_0}{P} \left[
+                     a_p \sin(\Omega(t-t_\mathrm{asc}))
+                    - \epsilon_{a_p} \sin(\Omega (t-t_\mathrm{asc}))
+                   - a_p \Omega \epsilon_{t_\mathrm{asc}} \right]  \\
+                   &+& \frac{2 \pi \epsilon_f}{P}  a_p  \sin(\Omega ( t-t_\mathrm{asc}))
 \end{eqnarray}
-  (take max)
 \begin{eqnarray}
-f &\approx& f0 + err_f + (2pi f0/P)*[
+\max(f) &\approx& f0 + err_f + (2pi f0/P)*[
                      a sin i \\ 
                    &-& err_a * \\
                    &-& 2 pi (a sin i)/P * err_t] \\
