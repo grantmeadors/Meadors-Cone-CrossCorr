@@ -18,13 +18,44 @@ We illustrate this equation with figures and compare results to the correspondin
 
 \section{Introduction}
 
+A. Neunzert is currently investigating $X$-structures [LIGO-G1600577] in the TwoSpect pattern space that have been recently documented \hyperref[https://dx.doi.org/10.1088/0264-9381/33/10/105017]{[\textit{Classical and Quantum Gravity} \textbf{31} (2016) 105017]}.
+Figure~\ref{TwoSpectGraph} illustrates such an $X$.
+This structure is prominent in both the test statistic, $R$, and extrapolated single-template $\log_{10} p$-value (latter shown).
+Here we note how investigations into CrossCorr [\textit{Physical Review D} \textbf{91} (2015) 102005] show that an analogous, conical feature exists for the test statistic $\rho$ in the ($f$, $a \sin i$, $t_\mathrm{asc})$ paremeter space.
+While this long-range correlated structure should not be expected to be predicted by the metric approximation about peak $\rho$, it is a predictable consequence of the signal model.
+Similar structures can reasonably be expected from other binary continuous-wave searches.
 
+Scripts and plots are hosted on Atlas,
 
-The theory makes more sense now, and I have more and better graphs.
+\begin{center}
+\url{<
+https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/
+>}
+\end{center}
 
+\noindent CrossCorr settings 
+are logged in 
+\texttt{log\_crosscorr.txt}. 
+For example,
+$T_\mathrm{sft}$ = 840 s, \texttt{maxLag} = 840 s, to aid direct comparison with TwoSpect.
+The scripts are
+\begin{itemize}
+    \item \texttt{wrapCrossCorr.py}\\
+      (wrapper function, itself called as in \texttt{example-TwoSpect-like.txt})
+    \item \texttt{libCallCC.py}\\
+      (functions for the wrapper)
+    \item \texttt{createHeatmap.py}\\
+      (grapher)
+\end{itemize}
 
-Following Ansel's suggestion, I mimicked the TwoSpect injection from the
-original post,
+Note that we plot $\Delta f_\mathrm{obs}$,
+
+\begin{equation} 
+\Delta f_\mathrm{obs} = \frac{2 \pi a_p}{P} f,
+\end{equation}
+
+\noindent with $a_p = (a \sin i)/c$ and orbital period $P = 2 \pi / \Omega$.
+This convention facilitates easier comparison.
 
 \begin{figure}
 \includegraphics[trim= 0 0 0 0, clip, width=0.40\paperwidth,keepaspectratio]{plots/DFvsFresultsProb-H1_pulsar-040.pdf}
@@ -33,17 +64,10 @@ original post,
 https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/graph-H1-40e-26-TSni/DFvsFresultsProb-H1_pulsar-040.pdf
 >}
 }
+\label{TwoSpectGraph}
 \end{figure}
 
-with CrossCorr ($T_sft$ = 840 s, \texttt{maxLag} = 840 s). The full set of commands
-(run as in "example-TwoSpect-like.txt"; log in "\texttt{log\_crosscorr.txt}") and
-Python scripts is in, with some duplication,
 
-\begin{center}
-\url{<
-https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossCorr/
->}
-\end{center}
 
 Note for CrossCorr people: I'm plotted the (modulation depth = 2 pi a
 sin i / P) dimension instead of a sin i, but the script allows either.
@@ -230,13 +254,13 @@ You're welcome to include any of this material on a wiki, though I do
 not know where on the wiki to put it. Also, please let me know if this
 is old news (and already covered in the iPython notebooks).
 
-My scripts are
-    \texttt{wrapCrossCorr.py}
-      (wrapper function, itself called as in example-TwoSpect-like.txt)
-    \texttt{libCallCC.py}
-      (functions for the wrapper)
-    \texttt{createHeatmap.py}
-      (grapher)
+%My scripts are
+%    \texttt{wrapCrossCorr.py}
+%      (wrapper function, itself called as in example-TwoSpect-like.txt)
+%    \texttt{libCallCC.py}
+%      (functions for the wrapper)
+%    \texttt{createHeatmap.py}
+%      (grapher)
 
 NOTE: ADD material on why there are double-dots at $\pm$ some frequency around the central injection. My guess is that they are at one modulation depth away, and result from being in anti-phase somehow -- but it does not totally make sense. Investigate.
 
