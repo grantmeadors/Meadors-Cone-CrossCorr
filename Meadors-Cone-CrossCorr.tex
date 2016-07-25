@@ -199,6 +199,8 @@ The conic sections observed in Figures~\ref{FAcenterGraph} through~\ref{TFoffset
 Since the behavior of $\rho$ near the injection is well-described by the metric in the methods paper, let us focus on the extended cone.
 When clarity is needed, true injection parameters are subscribed with zero (\textit{e.g.,} $f_0$).
 
+\subsection{Heuristic approach}
+
 Begin by considering the \textit{time-frequency} plane -- a spectogram, or plot of Short Fourier Transform bin powers over time -- of a solar-system barycentered signal.
 Although power is concentrated in the extremal frequencies ($f_0 \pm \Delta f_\mathrm{obs}$) when averaged over time, as in the amplitude spectral density or an FFT over times of the \textit{time-frequency} plane, in the plane itself, the bins have comparitively uniform power.
 
@@ -247,31 +249,39 @@ s \in (-\infty, +\infty),~\theta \in [0, 2 pi);
 \end{eqnarray}
 
 \begin{eqnarray}
-\delta f - f_0                        &=& s,\\
-\delta \Delta f_\mathrm{obs} - \frac{2 f_0 \pi a_p}{P} &=& s \times 1 \times \cos(\theta),\\
-\delta t_\mathrm{asc} - t_\mathrm{asc}                   &=& s \times \left(\max\left(\frac{df}{dt} \right)\right)^{-1} * \sin(\theta),
+\delta f                        &=& s, \label{fEq}\\
+\delta \Delta f_\mathrm{obs} &=& s \times 1 \times \cos(\theta), \label{aEq}\\
+\delta t_\mathrm{asc}                  &=& s \times \left(\max\left(\frac{df}{dt} \right)\right)^{-1} * \sin(\theta) \label{tEq},
 \end{eqnarray}
 
 \noindent The middle equation could equivalently be written
 
 \begin{equation}
-\delta a_p - a_p = s \times \frac{P}{2 \pi f_0} \times \cos(\theta).
+\delta a_p= s \times \frac{P}{2 \pi f_0} \times \cos(\theta).
 \end{equation}
 
 Likewise, the equation last expands to
 
 \begin{equation}
-\delta t_\mathrm{asc} - t_\mathrm{asc}     = s \times \frac{P^2}{(4 \pi^2 f_0 a_p)} \times \sin(\theta).
+\delta t_\mathrm{asc}    = s \times \frac{P^2}{(4 \pi^2 f_0 a_p)} \times \sin(\theta).
 \end{equation}
 
-There are a few remaining subtleties. For example, $Tasc'$ will have to
-start curving to follow large $F'$ offsets -- I'd guess the largest scale
-structure in that dimension is actually sinusoidal with period equal to
-orbital period $P$ and amplitude $(P/2)$.
+\subsection{Periodicity in time of ascension}
 
 
 
-To expand in small errors,
+At the largest scale, $t_\mathrm{asc}$ is periodic: $\rho(t_\mathrm{asc}) = \rho(t_\mathrm{asc} \mathrm{~mod~} P)$.
+While we neglect this periodicity in our current studies, we expect that the full TF plane would show that the surface follows
+
+\begin{equation}
+\delta f = \max \left(\frac{df}{dt} \right) \frac{P}{2 \pi} \sin \left(\frac{P}{2 \pi} \delta t_\mathrm{asc} \right),
+\end{equation}
+
+\noindent of which the $\theta = \pi/2$ cases of Equations~\ref{fEq} and~\ref{tEq} are an approximation near $\delta t_\mathrm{asc} =0$.
+
+\subsection{Alternate derivation from small errors}
+
+Our problem can be approached more rigorously by considering small errors: $\epsilon_f$, $\epsilon_{a_p}$, $\epsilon_{t_\mathrm{asc}}$:
 
 \begin{eqnarray}
 f &\approx& f0 + err_f + (2pi f0/P)*[
