@@ -223,11 +223,11 @@ Calculating $\pm \max \left(d f / d t\right)$ (identical results are obtained, u
 
 \begin{eqnarray}
   \frac{df}{dt}
-      &=& \frac{d}{dt} \left(f_0 + \frac{2 \pi f_0 a_p}{P} \sin \left[\Omega(t - t_\mathrm{asc})\right]\right)\\
-      &=& \left(\frac{4 \pi^2 f_0 a_p}{P^2} \right) \cos[\Omega(t - t_\mathrm{asc})]) \\
+      &=& \frac{d}{dt} \left(f_0 + \frac{2 \pi f_0 a_p}{P} \sin \left[\Omega(t - t_\mathrm{asc})\right]\right),\\
+      &=& \left(\frac{4 \pi^2 f_0 a_p}{P^2} \right) \cos[\Omega(t - t_\mathrm{asc})]). \\
   \max \left(\frac{df}{dt} \right)
-      &=& \frac{4 \pi^2 f_0 a_p}{P^2}\\
-      &\approx& 1.23 \times 10^{-6} \mathrm{~Hz~s}^{-1} \nonumber\\
+      &=& \frac{4 \pi^2 f_0 a_p}{P^2},\\
+      &\approx& 1.23 \times 10^{-6} \mathrm{~Hz~s}^{-1}, \nonumber\\
       &~& \mid {f_0 = 100.015\mathrm{~Hz}, a_p = 1.44\mathrm{~s}, P = 68023.82\mathrm{~s} },\\
       &\approx& 1\mathrm{~mHz} / (1000\mathrm{~s}).
 \end{eqnarray}
@@ -235,50 +235,41 @@ Calculating $\pm \max \left(d f / d t\right)$ (identical results are obtained, u
 \noindent Such a slope is observed in Figure~\ref{TFcenterGraph}.
 
 Last, the ellipse in the AT plane emerges from moving the point of contact between the template and the signal.
+For $\delta f = 0$, variations $\delta \Delta f_\mathrm{obs}$ and $\delta t_\mathrm{asc}$ will cause signal loss.
+If $\delta f \neq 0$, then the signal is already lost.
+We have already explained how $\delta \Delta f_\mathrm{obs} = \pm \delta f$ or $\delta t_\mathrm{asc} = \pm \delta f / \max (df/dt)$ restore contact, respectively at the extremal frequencies $f = f_0 \pm \Delta f_\mathrm{obs}$ or at the rising and falling edges, $f = f_0$.
+We see in Figure~\ref{AToffsetGraph} that any point can be chosen on the ellipse with semi-major axes $(\delta \Delta f_\mathrm{obs}, \delta t_\mathrm{asc}) = (\delta f, \delta f/ \max (df /dt))$.
 
-
-Staying in the 1st Fourier domain, the circle in the AT plane is also
-straightforward. For a fixed frequency offset, a template at Tasc', mod
-depth = DFobs', can slide the point of contact between the template and
-the true sinusoid signal by moving (Tasc', DFobs') in an ellipse. The
-respective semi-axes at frequency offset "F\_offset" (F\_offset/$(df/dt)$,
-F\_offset).
-
-Conceptual note: we're used to thinking that all the power is in the
-"horns", which is true when we sum over SFTs (project the sinusoid's
-power onto the frequency dimension), but the instantaneous power in each
-bin is relatively constant.
-
-Putting all this together, the CrossCorr structure is a cone given by
-the parametric equations [template frequency F', template mod depth
-DFobs', template time of ascension Tasc']
+In sum, we describe the CrossCorr structure as a cone, give by the following parametric equations:
 
 \begin{eqnarray}
-s \in (-\infty, +\infty), \theta \in [0, 2 pi)
+s \in (-\infty, +\infty),~\theta \in [0, 2 pi);
 \end{eqnarray}
 
 \begin{eqnarray}
-F' - f0                        &=& s\\
-DFobs' - (2 pi f0 (a sin i)/P) &=& s * 1 * \cos(\theta)\\
-Tasc' - Tasc                   &=& s * (df/dt)^(-1) * sin(theta)
+\delta f - f_0                        &=& s,\\
+\delta \Delta f_\mathrm{obs} - \frac{2 f_0 \pi a_p}{P} &=& s \times 1 \times \cos(\theta),\\
+\delta t_\mathrm{asc} - t_\mathrm{asc}                   &=& s \times \left(\max\left(\frac{df}{dt} \right)\right)^{-1} * \sin(\theta),
 \end{eqnarray}
 
-The middle equation could equivalently be written
+\noindent The middle equation could equivalently be written
 
 \begin{equation}
-Asini' - a sin i = s * P/(2 pi f0) * cos(theta)
+\delta a_p - a_p = s \times \frac{P}{2 \pi f_0} \times \cos(\theta).
 \end{equation}
 
-And the last expands to
+Likewise, the equation last expands to
 
 \begin{equation}
-Tasc' - Tasc     = s * P^2/(4 pi^2 f0 (a sin i)) * sin(theta)
+\delta t_\mathrm{asc} - t_\mathrm{asc}     = s \times \frac{P^2}{(4 \pi^2 f_0 a_p)} \times \sin(\theta).
 \end{equation}
 
 There are a few remaining subtleties. For example, $Tasc'$ will have to
 start curving to follow large $F'$ offsets -- I'd guess the largest scale
 structure in that dimension is actually sinusoidal with period equal to
 orbital period $P$ and amplitude $(P/2)$.
+
+
 
 To expand in small errors,
 
