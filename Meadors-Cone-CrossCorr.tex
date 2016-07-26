@@ -224,7 +224,7 @@ Turning to the graphs: in the FA plane, the $X$-slope $d \Delta f_\mathrm{obs} /
 This slope is identical to the $X$ in TwoSpect.
 Its origin is described in depth in the TwoSpect directed methods paper.
 When $f$ is offset by $\delta f$ and other parameters remain the same, the signal is lost.
-However, if $\Delta f_\mathrm{obs}$ is also offset by $|\pm \delta \Delta f_\mathrm{obs}| = \delta f$, then the maximum (or minimum) frequency of the signal, $f_0 \pm \Delta f_\mathrm{obs}$, will be sensed by a template. 
+However, if $\Delta f_\mathrm{obs}$ is also offset by $|\pm \delta \Delta f_\mathrm{obs}| = \delta f$, then the maximum (or minimum) frequency of the signal, $f_0 \pm \Delta f_\mathrm{obs}$, will be sensed by a \textit{template} (\textit{i.e.,} signal-model). 
 Note also that when $\delta t_\mathrm{asc} \neq 0$, the true parameters miss the extrema; we deal with this more rigorously later.
 In units of projected semi-major axis,
 
@@ -356,11 +356,12 @@ c &=& \sqrt{a^2 + b^2 + 2 a b \cos \alpha}\\
 f &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \sin \phi \right) \nonumber\\
   &+& \epsilon_f  + \sqrt{\left(\frac{2 \pi f_0}{P} \epsilon_{a_p}\right)^2 + \left(\frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}}\right)^2 } \sin \left(\phi + \beta \right). \label{altDefinition}\\
 \beta &\equiv& \arctan\left(\frac{2\pi f_0 a_p}{P} \frac{\epsilon_{t_\mathrm{asc}}}{\epsilon_{a_p}} \right).
+\label{angleOfContact}
 \end{eqnarray}
 
 \noindent These equations implicitly define the double-cone as the surface where the second line of Equation~\ref{altDefinition} sums to zero.
 
-\subsection{Additional features}
+\subsection{Additional features in parameter space}
 
 By including smaller terms, we could likely discover smaller, additional structures, such as the extended $W$ outside the central $X$ in TwoSpect.
 The $W$ appears at $\delta f = \pm (\Delta f_\mathrm{obs} + \delta \Delta f_\mathrm{obs})$.
@@ -373,6 +374,11 @@ Equivalently, it is expected at
 
 \noindent This should arise in CrossCorr from the interaction between line 1, term 2 and line 2, term 1 in Equation~\ref{altDefinition}.
 
+\subsection{Point of contact on sinusoid}
+
+Equation~\ref{angleOfContact} specifies exactly where the true signal and the CrossCorr signal model
+
+\subsection{Validity of approximations}
 To check the validity of approximating by $\mathcal{O}(0)$ in Equation~\ref{simplePhi}, restore the term,
 
 \begin{eqnarray}
@@ -401,7 +407,7 @@ More usefully, solve for zero sum at $\phi=0$, $\epsilon_{t_\mathrm{asc}} =0$:
 \epsilon_f = -\frac{1}{1 - (2\pi a_p/P)} \frac{2\pi}{P} f_0 \epsilon_{a_p}.
 \end{eqnarray}
 
-\noindent Thus the precise error from our approximation is a factor of $2 \pi a_p /P$ in the slope of the line in the FA plane.
+\noindent Thus the precise error from our approximation in Equation~\ref{simplePhi} is a factor of $2 \pi a_p /P$ in the slope of the line in the FA plane (about $2\times 10^{-5}$ for Sco X-1).
 
 \subsection{Eccentricity}
 
