@@ -417,9 +417,22 @@ More usefully, solve for zero sum at $\phi=0$, $\epsilon_{t_\mathrm{asc}} =0$:
 
 \subsection{Eccentricity}
 
-Pending detailed investigations, it seems a safe assumption that CrossCorr behaves similarly to TwoSpect in response to eccentricity.
+Pending detailed investigations, CrossCorr likely behaves similarly to TwoSpect in response to eccentricity.
 Consult LIGO-T1500594.
 Concisely, low eccentricity should merely shift the observed position of the signal without significantly weakening it.
+For argument of periapsis $\omega$ and eccentricity $e$,
+the maximum $\rho$ is estimated to be at these coordinates:
+
+\begin{equation}
+\delta f_\mathrm{a} = \frac{1}{2} \left( \frac{\sqrt{1-e^2} \cos^2 \omega + \sin^2 \omega}{1-e^2 \cos^2 \omega} e \cos \omega \right) \Delta f_\mathrm{obs},
+\label{solved_dfa}
+\end{equation}
+\begin{equation}
+\delta \Delta f_\mathrm{a} = \frac{1}{2} \left( \frac{\sqrt{1-e^2} \cos^2 \omega + \sin^2 \omega}{1-e^2 \cos^2 \omega} \right)  \Delta f_\mathrm{obs} - \Delta f_\mathrm{obs}.
+\label{solved_ddfa}
+\end{equation}
+
+
 
 \subsection{Background subtraction}
 
