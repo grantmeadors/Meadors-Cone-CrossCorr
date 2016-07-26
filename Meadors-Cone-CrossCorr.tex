@@ -75,15 +75,9 @@ https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/g
 
 \section{Illustrations}
 
-We take 2D slices through the 3D CrossCorr parameter space.
-These dimensions are referenced by one-letter shorthand: F for $f$, A for $a_p$, T for $t_\mathrm{asc}$.
-For ease of comparison, $\Delta f_\mathrm{obs} \propto a_p$ is actually graphed for A.
-Each slice preserves F-A-T cyclic order, meaning that we graph the FA, AT, and TF planes along $xy$-axes.
-Injection parameters are listed in Table~\ref{injection_table}; \texttt{lalapps\_Makefakedata\_v5} generated the injection.
 
-
-\begin{center}
 \begin{table}
+\begin{center}
 \begin{tabular}{lr}
 \textbf{Parameter} & \textbf{Value}\\
 \hline
@@ -107,10 +101,18 @@ Injection parameters are listed in Table~\ref{injection_table}; \texttt{lalapps\
 \hline
 \textit{(duration)} & 1e6
 \end{tabular}
-\label{injection_table}
 \caption{Injection parameters}
-\end{table}
+\label{injection_table}
 \end{center}
+\end{table}
+
+
+
+We take 2D slices through the 3D CrossCorr parameter space.
+These dimensions are referenced by one-letter shorthand: F for $f$, A for $a_p$, T for $t_\mathrm{asc}$.
+For ease of comparison, $\Delta f_\mathrm{obs} \propto a_p$ is actually graphed for A.
+Each slice preserves F-A-T cyclic order, meaning that we graph the FA, AT, and TF planes along $xy$-axes.
+Injection parameters are listed in Table~\ref{injection_table}; \texttt{lalapps\_Makefakedata\_v5} generated the injection.
 
 
 
