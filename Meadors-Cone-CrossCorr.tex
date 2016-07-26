@@ -285,6 +285,7 @@ While we neglect this periodicity in our current studies, we expect that the ful
 \subsection{Alternate derivation from small errors}
 
 Our problem can be approached more rigorously by considering small errors: $\epsilon_f$, $\epsilon_{a_p}$, $\epsilon_{t_\mathrm{asc}}$.
+These correspond to the aforementioned offsets $\delta f$, $\delta a_p$, and $\delta t_\mathrm{asc}$.
 Beginning from the signal model in the \textit{time-frequency} plane:
 
 
@@ -340,7 +341,7 @@ c &=& \sqrt{a^2 + b^2 + 2 a b \cos \alpha}\\
 \begin{eqnarray}
 f &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \right) \nonumber\\
   &+& \epsilon_f  + \sqrt{\left(\frac{2 \pi f_0}{P} \epsilon_{a_p}\right)^2 + \left(\frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}}\right)^2 } \sin \left(\phi + \beta \right). \label{altDefinition}\\
-\beta &\equiv& \arctan\left(\frac{2\pi f_0 a_p}{P} \frac{\epsilon_{t_\mathrm{asc}}}{e_{a_p}} \right).
+\beta &\equiv& \arctan\left(\frac{2\pi f_0 a_p}{P} \frac{\epsilon_{t_\mathrm{asc}}}{\epsilon_{a_p}} \right).
 \end{eqnarray}
 
 \noindent These equations implicitly define the double-cone as the surface where the second line of Equation~\ref{altDefinition} sums to zero.
