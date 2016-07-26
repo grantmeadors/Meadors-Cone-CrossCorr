@@ -432,10 +432,18 @@ As the entire graph is at an offset $f$, this central zone is probably reduced f
 
 Double-cone structures exist in the CrossCorr parameter space, and the basic features can be inferred mathematically.
 This feature is a consequence of the signal model.
+
 In the future, this feature might be exploitable.
 Lines parallel to the $f$-axis, at sparsely-spaced $\Delta f_\mathrm{obs}$ and $t_\mathrm{asc}$, but densely spaced in $f$, could be probed.
-The $\rho$ values calculated along these lines could be assembled into a meta-statistic, much as $R$ for TwoSpect can be assembled into a $X$ statistic.
-This meta-statistic might have acceptable detection efficiency: while not as good as $\rho$ itself, it may be much less computationally-costly, especially given the 3D nature of the CrossCorr search.
+This is convenient, since resampling needs to be done per each $\Delta f_\mathrm{obs}$ and $t_\mathrm{abs}$ but yields a dense array of $f$.
+The $\rho$ values calculated along these lines could be assembled into a meta-statistic, much as $R$ for TwoSpect can be assembled into a $X$ statistic (as with A. Neunzert's work).
+Another approach would be to use K. Wette's approach [LIGO-P1600162] and simulate a range of artificial metric mismatches with Monte Carlo, fit the true mismatches, and employ a much coarser, empirical grid.
+Presumably, the meta-statistic and empirical grid should converge to the same result, though the former may be provably correct and the latter easier to implement, especially for high-dimensional spaces.
+Either the meta-statistic or empirical grid might have acceptable detection efficiency: while not as good as $\rho$ itself, it may be much less computationally-costly, especially given the 3D nature of the CrossCorr search.
+Since lag-time $\texttt{maxLag}$ is tunable, the computational savings could be reinvested in longer lag.
+The precise benefits depend on the Receiver Operating Characteristic curve, as yet unknown, as a function of sparseness in $\Delta f_\mathrm{obs}$ and $t_\mathrm{asc}$.
+An all-sky CrossCorr search is not inconceivable.
+
 Meanwhile, for the full CrossCorr search, the emergence of the double-cone for a loud candidate or outlier could be considered evidence of a real signal, along the lines of \textit{signal morphology} tests in other groups.
 Finally, knowing the extent of the double-cone and whether the sum of $\rho$ values converges could be helpful in determining the long-range correlations in the search and calculating a true $p$-value, adjusted by trials factor, for a candidate.
 
