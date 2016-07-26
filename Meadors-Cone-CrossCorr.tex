@@ -325,14 +325,28 @@ Consider that if $|\cos \phi| = 1$, then $\Omega (t-t_\mathrm{asc}) = n \pi$ for
 That is when $f \approx f_0$.
 When $|\sin \phi| = 1$, then $f \approx f \pm \Delta f_\mathrm{obs}$.
 This substantiates the earlier discussion of where each effect dominates.
-We can simplify the Equation~\ref{niceApprox} into a more revealing form, using the trigonometric identity that $a \sin x + b\sin (x+\alpha) = c\sin(x + \beta)$ with $c =\sqrt{a^2 + b^2 + 2 a b \cos \alpha}$ and $\beta  = \arctan(b \sin \alpha / (a + b \cos \alpha))$: 
+
+Using the trigonometric identity that $a \sin x + b\sin (x+\alpha) = c\sin(x + \beta)$ with 
+
+\begin{eqnarray}
+c &=& \sqrt{a^2 + b^2 + 2 a b \cos \alpha}\\
+\beta  &=& \arctan(b \sin \alpha / (a + b \cos \alpha)),
+\end{eqnarray}
+
+\noindent we can simplify the Equation~\ref{niceApprox} into a more revealing form:
 
 \begin{eqnarray}
 f &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \right) \nonumber\\
-  &+& \epsilon_f  + \sqrt{\left(\frac{2 \pi f_0}{P} \epsilon_{a_p}\right)^2 + \left(\frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}}\right)^2 } \sin \left(\phi + \beta \right).\\
+  &+& \epsilon_f  + \sqrt{\left(\frac{2 \pi f_0}{P} \epsilon_{a_p}\right)^2 + \left(\frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}}\right)^2 } \sin \left(\phi + \beta \right). \label{altDefinition}\\
 \beta &\equiv& \arctan\left(\frac{2\pi f_0 a_p}{P} \frac{\epsilon_{t_\mathrm{asc}}}{e_{a_p}} \right).
 \end{eqnarray}
 
+\noindent These equations implicitly define the double-cone as the surface where the second line of Equation~\ref{altDefinition} sums to zero.
+By including smaller terms, we could likely discover smaller, additional structures, such as the extended $W$ outside the central $X$ in TwoSpect.
+
+\subsection{Eccentricity}
+
+\section{Conclusion}
 
 
 Long story short: the structures make sense.
