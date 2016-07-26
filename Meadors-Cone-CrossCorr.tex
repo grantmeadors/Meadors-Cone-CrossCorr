@@ -346,26 +346,27 @@ By including smaller terms, we could likely discover smaller, additional structu
 
 \subsection{Eccentricity}
 
+Pending detailed investigations, it seems a safe assumption that CrossCorr behaves similarly to TwoSpect in response to eccentricity.
+Consult LIGO-T1500594.
+
+\subsection{Additional features}
+
+Each CrossCorr figure in the FA and TF planes shows a band of starkly-reduced $\rho$ at frequencies above or below the true $f_0$ (and beyond the conic structure).
+This reduction in $\rho$ is presumably due to background subtraction over frequency bins, although this should be further investigated.
+Moreover, the AT plane Figure~\ref{AToffsetGraph} shows a zone of reduced $\rho$ in the center.
+As the entire graph is at an offset $f$, this central zone is probably reduced for the same reason.
+
 \section{Conclusion}
 
+Double-cone structures exist in the CrossCorr parameter space, and the basic features can be inferred mathematically.
+This feature is a consequence of the signal model.
+In the future, this feature might be exploitable.
+Lines parallel to the $f$-axis, at sparsely-spaced $\Delta f_\mathrm{obs}$ and $t_\mathrm{asc}$, but densely spaced in $f$, could be probed.
+The $\rho$ values calculated along these lines could be assembled into a meta-statistic, much as $R$ for TwoSpect can be assembled into a $X$ statistic.
+This meta-statistic might have acceptable detection efficiency: while not as good as $\rho$ itself, it may be much less computationally-costly, especially given the 3D nature of the CrossCorr search.
+Meanwhile, for the full CrossCorr search, the emergence of the double-cone for a loud candidate or outlier could be considered evidence of a real signal, along the lines of \textit{signal morphology} tests in other groups.
+Finally, knowing the extent of the double-cone and whether the sum of $\rho$ values converges could be helpful in determining the long-range correlations in the search and calculating a true $p$-value, adjusted by trials factor, for a candidate.
 
-Long story short: the structures make sense.
-
-You're welcome to include any of this material on a wiki, though I do
-not know where on the wiki to put it. Also, please let me know if this
-is old news (and already covered in the iPython notebooks).
-
-%My scripts are
-%    \texttt{wrapCrossCorr.py}
-%      (wrapper function, itself called as in example-TwoSpect-like.txt)
-%    \texttt{libCallCC.py}
-%      (functions for the wrapper)
-%    \texttt{createHeatmap.py}
-%      (grapher)
-
-NOTE: ADD material on why there are double-dots at $\pm$ some frequency around the central injection. My guess is that they are at one modulation depth away, and result from being in anti-phase somehow -- but it does not totally make sense. Investigate.
-
-NOTE: ECCENTRICITY
 
 \newpage
 
