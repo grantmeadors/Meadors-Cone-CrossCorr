@@ -250,20 +250,22 @@ s \in (-\infty, +\infty),~\theta \in [0, 2 pi);
 
 \begin{eqnarray}
 \delta f                        &=& s, \label{fEq}\\
-\delta \Delta f_\mathrm{obs} &=& s \times 1 \times \cos(\theta), \label{aEq}\\
-\delta t_\mathrm{asc}                  &=& s \times \left(\max\left(\frac{df}{dt} \right)\right)^{-1} * \sin(\theta) \label{tEq},
+\delta \Delta f_\mathrm{obs} &=& s \times 1 \times \sin(\theta), \label{aEq}\\
+\delta t_\mathrm{asc}                  &=& s \times \left(\max\left(\frac{df}{dt} \right)\right)^{-1} \cos(\theta) \label{tEq},
 \end{eqnarray}
 
-\noindent The middle equation could equivalently be written
+\noindent Equation~\ref{aEq} could equivalently be written
 
 \begin{equation}
-\delta a_p= s \times \frac{P}{2 \pi f_0} \times \cos(\theta).
+\delta a_p= s \times \frac{P}{2 \pi f_0} \times \sin(\theta).
+\label{aEqFull}
 \end{equation}
 
-Likewise, the equation last expands to
+Likewise, Equation~\ref{tEq} expands to
 
 \begin{equation}
-\delta t_\mathrm{asc}    = s \times \frac{P^2}{(4 \pi^2 f_0 a_p)} \times \sin(\theta).
+\delta t_\mathrm{asc}    = s \times \frac{P^2}{(4 \pi^2 f_0 a_p)} \times \cos(\theta).
+\label{tEqFull}
 \end{equation}
 
 \subsection{Periodicity in time of ascension}
@@ -283,33 +285,40 @@ While we neglect this periodicity in our current studies, we expect that the ful
 Our problem can be approached more rigorously by considering small errors: $\epsilon_f$, $\epsilon_{a_p}$, $\epsilon_{t_\mathrm{asc}}$.
 Beginning from the signal model in the \textit{time-frequency} plane:
 
+
 \begin{eqnarray}
-f & \approx & f_0 + \epsilon_f \\
+f & = & \left(f_0 + \epsilon_f\right) \left( 1 + \frac{2 \pi (a_p + \epsilon_{a_p})}{P}\sin \left(\Omega (t - (t_\mathrm{asc}+\epsilon_{t_\mathrm{asc}}) \right) \right)\\
+                   & \approx & f_0 + \epsilon_f \nonumber \\
                    &+& \frac{2\pi f_0}{P} \left[
-                     a_p \sin(\Omega(t-t_\mathrm{asc}))
-                   - \epsilon_{a_p} \sin(\Omega (t-t_\mathrm{asc}))
-                   - a_p \Omega \epsilon_{t_\mathrm{asc}} \right]  \\
-                   &+& \frac{2 \pi \epsilon_f}{P}  a_p  \sin(\Omega ( t-t_\mathrm{asc}))
+                     (a_p+\epsilon_{a_p}) \sin(\Omega(t-t_\mathrm{asc}))
+                   - a_p \Omega \epsilon_{t_\mathrm{asc}} \cos(\Omega(t-t_\mathrm{asc})) \right]  \nonumber \\
+                   &+& \frac{2 \pi \epsilon_f}{P}  a_p  \sin(\Omega ( t-t_\mathrm{asc})).
 \end{eqnarray}
+
+The presence of the $\epsilon_f$ term independent in the first line, independent of $(t-t_\mathrm{asc})$, explains why $f$ is qualitatively different from $\Delta f_\mathrm{obs}$ and $t_\mathrm{asc}$, such that $f$ is the axis of the cone.
+Simplifying by writing $\phi = \Omega (t- t_\mathrm{asc})$,
+
 \begin{eqnarray}
-\max(f) &\approx& f_0 + \epsilon_f \\
-                   &+&\frac{2 \pi f_0}{P}*\left[
+f &\approx& f_0 + \epsilon_f \nonumber \\
+                   &+&\frac{2 \pi f_0}{P}\left[
                      a_p
-                   - \epsilon_{a_p}
-                   - \frac{2 \pi  a_p}{P} \epsilon_{t_\mathrm{asc}}\right] \\
-                   &+& \mathcal{O}(0)
+                   + \epsilon_{a_p} \sin \phi
+                   - \frac{2 \pi  a_p}{P} \epsilon_{t_\mathrm{asc}} \cos \phi \right] \nonumber \\
+                   &+& \mathcal{O}(0)\\
+  &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \right) \nonumber \\
+  &+& \left(\epsilon_f + \frac{2 \pi f_0}{P} \epsilon_{a_p} \sin\phi - \frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}} \cos\phi\right)
 \end{eqnarray}
 
-Where we see that the ratios of coefficients are the same as above. Call
-equal $\Delta f$ errors $eq_f, eq_a, eq_t$:
+We rediscover earlier results in the ratios.
+Let $E_f$, $E_a$, $E_t$ be the respective $\epsilon_f$, $\epsilon_{a_p}$, $\epsilon_{t_\mathrm{asc}}$ that individually yield a given $\max (f)$ when the other $\epsilon =0$:
 
 \begin{eqnarray}
-eq_a / eq_f &=& P / (2 pi f0)\\
-eq_t / eq_f &=& P^2/(4 pi^2 f0 (a sin i))
+\frac{E_a }{ E_f } \sin\phi &=& \frac{P }{2 \pi f_0} \label{errorA}\\
+\frac{E_t }{ E_f } \cos\phi &=& \frac{P^2}{4 \pi^2 f_0 a_p}.\label{errorT}
 \end{eqnarray}
 
-which are the same coefficients as obtained for $(Asini' - a sin i)$ and
-$(Tasc' - Tasc)$ above, where we reasoned from the 1st Fourier domain.
+\noindent Not coincidentally, Equation~\ref{errorA} (when $\sin \phi = 1$) equals the ratio of Equation~\ref{aEqFull} to Equation~\ref{fEq} (when $\sin \theta = 1$).
+Analogously, Equation~\ref{errorT} (when $\cos \phi = 1$) equals the ratio of Equation~\ref{tEqFull} to Equation~\ref{fEq} (when $\cos \theta = 1$).
 
 Long story short: the structures make sense.
 
@@ -326,6 +335,8 @@ is old news (and already covered in the iPython notebooks).
 %      (grapher)
 
 NOTE: ADD material on why there are double-dots at $\pm$ some frequency around the central injection. My guess is that they are at one modulation depth away, and result from being in anti-phase somehow -- but it does not totally make sense. Investigate.
+
+NOTE: ECCENTRICITY
 
 \newpage
 
