@@ -307,18 +307,33 @@ f &\approx& f_0 + \epsilon_f \nonumber \\
                    &+& \mathcal{O}(0)\\
   &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \right) \nonumber \\
   &+& \left(\epsilon_f + \frac{2 \pi f_0}{P} \epsilon_{a_p} \sin\phi - \frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}} \cos\phi\right)
+\label{niceApprox}
 \end{eqnarray}
 
 We rediscover earlier results in the ratios.
-Let $E_f$, $E_a$, $E_t$ be the respective $\epsilon_f$, $\epsilon_{a_p}$, $\epsilon_{t_\mathrm{asc}}$ that individually yield a given $\max (f)$ when the other $\epsilon =0$:
+Let $E_f$, $E_a$, $E_t$ be the respective $\epsilon_f$, $\epsilon_{a_p}$, $\epsilon_{t_\mathrm{asc}}$ that individually yield a given $\max_\phi (f)$ when the other $\epsilon =0$:
 
 \begin{eqnarray}
-\frac{E_a }{ E_f } \sin\phi &=& \frac{P }{2 \pi f_0} \label{errorA}\\
-\frac{E_t }{ E_f } \cos\phi &=& \frac{P^2}{4 \pi^2 f_0 a_p}.\label{errorT}
+\frac{E_a }{ E_f }  &=& \frac{P }{2 \pi f_0} \label{errorA}\\
+\frac{E_t }{ E_f }  &=& \frac{P^2}{4 \pi^2 f_0 a_p}.\label{errorT}\\
+\frac{E_a}{E_t} &=& \frac{2 \pi f_0 a_p}{P}.\label{errorAT}
 \end{eqnarray}
 
-\noindent Not coincidentally, Equation~\ref{errorA} (when $\sin \phi = 1$) equals the ratio of Equation~\ref{aEqFull} to Equation~\ref{fEq} (when $\sin \theta = 1$).
-Analogously, Equation~\ref{errorT} (when $\cos \phi = 1$) equals the ratio of Equation~\ref{tEqFull} to Equation~\ref{fEq} (when $\cos \theta = 1$).
+\noindent Not coincidentally, Equation~\ref{errorA} equals the ratio of Equation~\ref{aEqFull} to Equation~\ref{fEq} (when $\sin \theta = 1$).
+Analogously, Equation~\ref{errorT} equals the ratio of Equation~\ref{tEqFull} to Equation~\ref{fEq} (when $\cos \theta = 1$).
+Consider that if $|\cos \phi| = 1$, then $\Omega (t-t_\mathrm{asc}) = n \pi$ for integer $n$.
+That is when $f \approx f_0$.
+When $|\sin \phi| = 1$, then $f \approx f \pm \Delta f_\mathrm{obs}$.
+This substantiates the earlier discussion of where each effect dominates.
+We can simplify the Equation~\ref{niceApprox} into a more revealing form, using the trigonometric identity that $a \sin x + b\sin (x+\alpha) = c\sin(x + \beta)$ with $c =\sqrt{a^2 + b^2 + 2 a b \cos \alpha}$ and $\beta  = \arctan(b \sin \alpha / (a + b \cos \alpha))$: 
+
+\begin{eqnarray}
+f &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \right) \nonumber\\
+  &+& \epsilon_f  + \sqrt{\left(\frac{2 \pi f_0}{P} \epsilon_{a_p}\right)^2 + \left(\frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}}\right)^2 } \sin \left(\phi + \beta \right).\\
+\beta &\equiv& \arctan\left(\frac{2\pi f_0 a_p}{P} \frac{\epsilon_{t_\mathrm{asc}}}{e_{a_p}} \right).
+\end{eqnarray}
+
+
 
 Long story short: the structures make sense.
 
