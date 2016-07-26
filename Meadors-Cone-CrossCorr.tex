@@ -262,25 +262,26 @@ In sum, we describe the CrossCorr structure as a cone, give by the following par
 
 \begin{eqnarray}
 s \in (-\infty, +\infty),~\theta \in [0, 2 pi);
+\label{parametrics}
 \end{eqnarray}
 
 \begin{eqnarray}
 \delta f                        &=& s, \label{fEq}\\
-\delta \Delta f_\mathrm{obs} &=& s \times 1 \times \sin(\theta), \label{aEq}\\
-\delta t_\mathrm{asc}                  &=& s \times \left(\max\left(\frac{df}{dt} \right)\right)^{-1} \cos(\theta) \label{tEq},
+\delta \Delta f_\mathrm{obs} &=& s \times 1 \times \cos(\theta), \label{aEq}\\
+\delta t_\mathrm{asc}                  &=& s \times \left(\max\left(\frac{df}{dt} \right)\right)^{-1} \sin(\theta) \label{tEq},
 \end{eqnarray}
 
 \noindent Equation~\ref{aEq} could equivalently be written
 
 \begin{equation}
-\delta a_p= s \times \frac{P}{2 \pi f_0} \times \sin(\theta).
+\delta a_p= s \times \frac{P}{2 \pi f_0} \times \cos(\theta).
 \label{aEqFull}
 \end{equation}
 
 Likewise, Equation~\ref{tEq} expands to
 
 \begin{equation}
-\delta t_\mathrm{asc}    = s \times \frac{P^2}{(4 \pi^2 f_0 a_p)} \times \cos(\theta).
+\delta t_\mathrm{asc}    = s \times \frac{P^2}{(4 \pi^2 f_0 a_p)} \times \sin(\theta).
 \label{tEqFull}
 \end{equation}
 
@@ -372,11 +373,16 @@ Equivalently, it is expected at
 \label{expectedW}
 \end{equation}
 
-\noindent This should arise in CrossCorr from the interaction between line 1, term 2 and line 2, term 1 in Equation~\ref{altDefinition}.
+\noindent Although there is a suggestive parallel in the interaction between line 1, term 2 and line 2, term 1 in Equation~\ref{altDefinition}, we must keep looking.
+CrossCorr, unlike TwoSpect, is sensitive to orbital phase. 
+Shifting $f$ by $\Delta f_\mathrm{obs}$, all else being equal, causes the template to be $\pi$ out of phase with the true signal.
+Hence, the lines of Equation~\ref{expectedW} are only likely to be found if  $\delta a_p \approx P/2$.
 
 \subsection{Point of contact on sinusoid}
 
-Equation~\ref{angleOfContact} specifies exactly where the true signal and the CrossCorr signal model
+Equation~\ref{angleOfContact} specifies exactly where the true signal and the CrossCorr signal model overlap.
+At $\beta = n \pi$, it is at $f = f_0 \pm \Delta f_\mathrm{obs}$; at $\beta = n \pi + (\pi/2)$, it is at $f = f_0$.
+Hence, up to a sign, $\beta = \theta$ from Equation~\ref{parametrics}.
 
 \subsection{Validity of approximations}
 To check the validity of approximating by $\mathcal{O}(0)$ in Equation~\ref{simplePhi}, restore the term,
