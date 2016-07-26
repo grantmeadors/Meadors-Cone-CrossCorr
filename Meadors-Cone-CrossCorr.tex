@@ -64,6 +64,7 @@ The scripts are
 This convention facilitates easier comparison.
 
 \begin{figure}
+\begin{center}
 \includegraphics[trim= 0 0 0 0, clip, width=0.80\paperwidth,keepaspectratio]{plots/DFvsFresultsProb-H1_pulsar-040.pdf}
 \caption{
 \url{<
@@ -71,6 +72,7 @@ https://ldas-jobs.ligo-wa.caltech.edu/~gmeadors/TwoSpect/2014/06/18/injections/g
 >}
 }
 \label{TwoSpectGraph}
+\end{center}
 \end{figure}
 
 \section{Illustrations}
@@ -121,6 +123,7 @@ Injection parameters are listed in Table~\ref{injection_table}; \texttt{lalapps\
 
 
 \begin{figure}
+\begin{center}
 \includegraphics[trim= 0 0 0 0, clip, width=0.80\paperwidth,keepaspectratio]{plots/match-TS/FAresultsR-band-100-0.pdf}
 \caption{
 \url{<
@@ -128,8 +131,10 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 >}
 }
 \label{FAcenterGraph}
+\end{center}
 \end{figure}
 \begin{figure}
+\begin{center}
 \includegraphics[trim= 0 0 0 0, clip, width=0.80\paperwidth,keepaspectratio]{plots/match-TS/ATresultsR-band-100-0.pdf}
 \caption{
 \url{<
@@ -137,8 +142,10 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 >}
 }
 \label{ATcenterGraph}
+\end{center}
 \end{figure}
 \begin{figure}
+\begin{center}
 \includegraphics[trim= 0 0 0 0, clip, width=0.80\paperwidth,keepaspectratio]{plots/match-TS/TFresultsR-band-100-0.pdf}
 \caption{
 \url{<
@@ -146,6 +153,7 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 >}
 }
 \label{TFcenterGraph}
+\end{center}
 \end{figure}
 
 Figures~\ref{FAcenterGraph},~\ref{ATcenterGraph}, and~\ref{TFcenterGraph} respectively depict the $f$-$\Delta f_\mathrm{obs}$, $\Delta f_\mathrm{obs}$-$t_\mathrm{asc}$, and $t_\mathrm{asc}$-$f$ plane through the center of an injection. 
@@ -166,6 +174,7 @@ The 5-bin offset is equivalent to
 \noindent The FA plane shows a hyperboloid with transverse axis parallel to the $f$-axis, the AT plane an open ring with maxima along an ellipse with transverse axis parallel to the $t_\mathrm{asc}$-axis, and the TF plane another hyperboloid with transverse axis parallel to the $f$-axis.
 
 \begin{figure}
+\begin{center}
 \includegraphics[trim= 0 0 0 0, clip, width=0.80\paperwidth,keepaspectratio]{plots/match-offset-TS/FAresultsR-band-100-0.pdf}
 \caption{
 \url{<
@@ -173,9 +182,11 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 >}
 }
 \label{FAoffsetGraph}
+\end{center}
 \end{figure}
 
 \begin{figure}
+\begin{center}
 \includegraphics[trim= 0 0 0 0, clip, width=0.80\paperwidth,keepaspectratio]{plots/match-offset-TS/ATresultsR-band-100-0.pdf}
 \caption{
 \url{<
@@ -183,9 +194,11 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 >}
 }
 \label{AToffsetGraph}
+\end{center}
 \end{figure}
 
 \begin{figure}
+\begin{center}
 \includegraphics[trim= 0 0 0 0, clip, width=0.80\paperwidth,keepaspectratio]{plots/match-offset-TS/TFresultsR-band-100-0.pdf}
 \caption{
 \url{<
@@ -193,6 +206,7 @@ https://www.atlas.aei.uni-hannover.de/~grant.meadors/LSC/ScoX1/2016/07/21-CrossC
 >}
 }
 \label{TFoffsetGraph}
+\end{center}
 \end{figure}
 
 \section{Interpretation}
@@ -304,11 +318,11 @@ Simplifying by writing $\phi = \Omega (t- t_\mathrm{asc})$,
 \begin{eqnarray}
 f &\approx& f_0 + \epsilon_f \nonumber \\
                    &+&\frac{2 \pi f_0}{P}\left[
-                     a_p
-                   + \epsilon_{a_p} \sin \phi
+                     (a_p
+                   + \epsilon_{a_p}) \sin \phi
                    - \frac{2 \pi  a_p}{P} \epsilon_{t_\mathrm{asc}} \cos \phi \right] \nonumber \\
-                   &+& \mathcal{O}(0)\\
-  &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \right) \nonumber \\
+                   &+& \mathcal{O}(0) \label{simplePhi}\\
+  &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \sin \phi \right) \nonumber \\
   &+& \left(\epsilon_f + \frac{2 \pi f_0}{P} \epsilon_{a_p} \sin\phi - \frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}} \cos\phi\right)
 \label{niceApprox}
 \end{eqnarray}
@@ -339,20 +353,63 @@ c &=& \sqrt{a^2 + b^2 + 2 a b \cos \alpha}\\
 \noindent we can simplify the Equation~\ref{niceApprox} into a more revealing form:
 
 \begin{eqnarray}
-f &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \right) \nonumber\\
+f &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \sin \phi \right) \nonumber\\
   &+& \epsilon_f  + \sqrt{\left(\frac{2 \pi f_0}{P} \epsilon_{a_p}\right)^2 + \left(\frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}}\right)^2 } \sin \left(\phi + \beta \right). \label{altDefinition}\\
 \beta &\equiv& \arctan\left(\frac{2\pi f_0 a_p}{P} \frac{\epsilon_{t_\mathrm{asc}}}{\epsilon_{a_p}} \right).
 \end{eqnarray}
 
 \noindent These equations implicitly define the double-cone as the surface where the second line of Equation~\ref{altDefinition} sums to zero.
+
+\subsection{Additional features}
+
 By including smaller terms, we could likely discover smaller, additional structures, such as the extended $W$ outside the central $X$ in TwoSpect.
+The $W$ appears at $\delta f = \pm (\Delta f_\mathrm{obs} + \delta \Delta f_\mathrm{obs})$.
+Equivalently, it is expected at
+
+\begin{equation}
+\delta f = \pm \frac{2\pi}{P} (a_p + \delta a_p) f_0.
+\label{expectedW}
+\end{equation}
+
+\noindent This should arise in CrossCorr from the interaction between line 1, term 2 and line 2, term 1 in Equation~\ref{altDefinition}.
+
+To check the validity of approximating by $\mathcal{O}(0)$ in Equation~\ref{simplePhi}, restore the term,
+
+\begin{eqnarray}
+f  &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \sin \phi \right) \nonumber \\
+  &+& \left(\epsilon_f + \frac{2 \pi}{P} (f_0 \epsilon_{a_p} + \epsilon_f a_p) \sin\phi - \frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}} \cos\phi\right)
+\label{betterApprox}\\
+ &\approx& \left(f_0 + \frac{2\pi f_0 a_p}{P} \sin \phi \right) \nonumber\\
+  &+& \epsilon_f  + \sqrt{\left(\frac{2 \pi}{P} (f_0 \epsilon_{a_p} + \epsilon_f a_p )\right)^2 + \left(\frac{4 \pi^2 f_0 a_p}{P^2} \epsilon_{t_\mathrm{asc}}\right)^2 } \sin \left(\phi + \beta \right). \label{bestDefinition}\\
+\beta &\equiv& \arctan\left(\frac{2\pi f_0 a_p}{P} \frac{\epsilon_{t_\mathrm{asc}}}{f_0 \epsilon_{a_p} + \epsilon_f a_p} \right).
+\end{eqnarray}
+
+\noindent For comparison, one can rearrange,
+
+
+\begin{equation}
+f_0 \epsilon_{a_p} + \epsilon_f a_p = \Delta f_\mathrm{obs}\left(\frac{\epsilon_{a_p}}{a_p} + \frac{\epsilon_f}{f_0} \right),
+\end{equation}
+
+\noindent
+For Sco X-1 search configurations, $\epsilon_{a_p}/a_p$ tends to be much larger than $\epsilon_f /f_0$, justifying our earlier approximation.
+More usefully, solve for zero sum at $\phi=0$, $\epsilon_{t_\mathrm{asc}} =0$:
+
+
+\begin{eqnarray}
+\epsilon_f + \frac{2\pi}{P} (f_0 \epsilon_{a_p} + \epsilon_f a_p) = 0,\\
+\epsilon_f = -\frac{1}{1 - (2\pi a_p/P)} \frac{2\pi}{P} f_0 \epsilon_{a_p}.
+\end{eqnarray}
+
+\noindent Thus the precise error from our approximation is a factor of $2 \pi a_p /P$ in the slope of the line in the FA plane.
 
 \subsection{Eccentricity}
 
 Pending detailed investigations, it seems a safe assumption that CrossCorr behaves similarly to TwoSpect in response to eccentricity.
 Consult LIGO-T1500594.
+Concisely, low eccentricity should merely shift the observed position of the signal without significantly weakening it.
 
-\subsection{Additional features}
+\subsection{Background subtraction}
 
 Each CrossCorr figure in the FA and TF planes shows a band of starkly-reduced $\rho$ at frequencies above or below the true $f_0$ (and beyond the conic structure).
 This reduction in $\rho$ is presumably due to background subtraction over frequency bins, although this should be further investigated.
